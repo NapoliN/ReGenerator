@@ -24,6 +24,10 @@ public class DisturbFreePattern {
         return pattern.getType();
     }
 
+    public ReDoSPattern getPattern(){
+        return pattern;
+    }
+
     public DisturbFreePattern(ReDoSPattern pattern, List<SequenceExpr> disturbExprs) {
         this.pattern = pattern;
         this.disturbExprs.addAll(disturbExprs);
@@ -419,6 +423,8 @@ public class DisturbFreePattern {
         }
     }
 
+    // 攻撃文字列の候補を生成する
+    // 個数は120未満
     public List<AttackString> generate() {
         Set<AttackString> attackStrings = new HashSet<>();
         List<AttackPath> attackPaths = tryFreeDisturb();

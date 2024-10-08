@@ -37,6 +37,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
                 <executions>
                     <execution>

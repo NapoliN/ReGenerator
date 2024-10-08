@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import rengar.parser.ast.LoopExpr.LoopType;
+
 public class LoopExpr extends Expr {
     public enum LoopType {
         Greedy, Lazy, Possessive
@@ -36,6 +38,27 @@ public class LoopExpr extends Expr {
         body = expr;
     }
 
+    public String genJsonExpression() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Loop\", ");
+        sb.append("\"min\": ");
+        sb.append(min);
+        sb.append(", ");
+        sb.append("\"max\": ");
+        sb.append(max);
+        sb.append(", ");
+        sb.append("\"strategy\": ");
+        sb.append("\"");
+        sb.append(type);
+        sb.append("\", ");
+        sb.append("\"body\": ");
+        sb.append(body.genJsonExpression());
+        sb.append("}");
+        return sb.toString();
+    }
+
     @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
@@ -60,6 +83,8 @@ public class LoopExpr extends Expr {
     }
 
     public LoopExpr copy() {
-        return new LoopExpr(min, max, type, body.copy());
+        LoopExpr newLoopExpr = new LoopExpr(min, max, type, body.copy());
+        newLoopExpr.setExprId(getExprId());
+        return newLoopExpr;
     }
 }

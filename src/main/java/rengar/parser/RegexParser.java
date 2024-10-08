@@ -12,6 +12,12 @@ public abstract class RegexParser {
 
     protected int pos = 0; // current position in buffer
 
+    private int nextExprId = 0;
+
+    protected int popExprId(){
+        return ++nextExprId;
+    }
+
     public enum Language {
         Java, Python, JavaScript
     }

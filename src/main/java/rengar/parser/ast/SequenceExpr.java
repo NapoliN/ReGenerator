@@ -12,6 +12,22 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
         return exprs;
     }
 
+    public String genJsonExpression() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Sequence\",");
+        sb.append("\"sequences\": [");
+        sb.append(exprs.get(0).genJsonExpression());
+        for (int i = 1; i < exprs.size(); i++) {
+            sb.append(",");
+            sb.append(exprs.get(i).genJsonExpression());
+        }
+        sb.append("]");
+        sb.append("}");
+        return sb.toString();
+    }
+
     @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
@@ -24,6 +40,7 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
     @Override
     public SequenceExpr copy() {
         SequenceExpr newSeqExpr = new SequenceExpr();
+        newSeqExpr.setExprId(getExprId());
         for (Expr expr : exprs) {
             newSeqExpr.add(expr.copy());
         }

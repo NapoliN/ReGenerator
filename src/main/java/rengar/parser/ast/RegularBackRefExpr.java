@@ -10,12 +10,24 @@ public class RegularBackRefExpr extends BackRefExpr {
     }
 
     @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"BackRef\"");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         return String.format("\\%d", index);
     }
 
     @Override
     public RegularBackRefExpr copy() {
-        return new RegularBackRefExpr(index);
+        RegularBackRefExpr newRegularBackRefExpr = new RegularBackRefExpr(index);
+        newRegularBackRefExpr.setExprId(getExprId());
+        return newRegularBackRefExpr;
     }
 }

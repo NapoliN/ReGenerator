@@ -43,6 +43,7 @@ public class CharRangeExpr extends CharExpr {
 
     public CharRangeExpr copy() {
         CharRangeExpr newCharRangeExpr = new CharRangeExpr();
+        newCharRangeExpr.setExprId(getExprId());
         newCharRangeExpr.rangeSet = rangeSet.copy();
         newCharRangeExpr.neg = neg;
         newCharRangeExpr.setStr(string);
@@ -51,6 +52,40 @@ public class CharRangeExpr extends CharExpr {
 
     public void setRangeSet(CharRangeSet rangeSet) {
         this.rangeSet = rangeSet;
+    }
+
+    @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Char\", ");
+        if (string != null && string.equals(".")){
+            sb.append("\"subtype\": \"Any\"");
+        }
+        else {
+            sb.append("\"subtype\": \"Range\", ");
+            sb.append("\"neg\": ");
+            sb.append(neg);
+            sb.append(", ");
+            sb.append("\"range\": ");
+            sb.append("\"[");
+            // TODO rangesetを出力する
+            CharRangeSet tmp = rangeSet;
+            for (CharRange range: tmp.getRanges()){
+                if (range.isSingleChar()) {
+                    int c = range.getSingleChar();
+                    sb.append(CharUtil.toPrintableString(c));
+                } else {
+                    sb.append(CharUtil.toPrintableString(range.begin));
+                    sb.append('-');
+                    sb.append(CharUtil.toPrintableString(range.end));
+                }
+            }
+            sb.append("]\"");
+        }
+        sb.append("}");
+        return sb.toString();
     }
 
     @Override

@@ -13,17 +13,22 @@ import java.util.*;
 public abstract class ReDoSPattern {
     protected RegexExpr regexExpr;
     protected SequenceExpr prefixExpr;
-    protected Expr attackableExpr;
+    protected final Expr attackableExpr;
     protected SequenceExpr postfixExpr;
     protected Expr upperLevelExpr;
     protected int condition;
 
+    //protected final Expr originalAttackableSubExpr;
     public ReDoSPattern(RegexExpr regexExpr, Expr attackableExpr,
                         Expr upperLevelExpr) {
         this.regexExpr = regexExpr.copy();
         this.attackableExpr = attackableExpr;
         this.upperLevelExpr = upperLevelExpr;
         split();
+    }
+
+    public Expr getExpr() {
+        return regexExpr;
     }
 
     public SequenceExpr getPrefixExpr() {
@@ -151,6 +156,7 @@ public abstract class ReDoSPattern {
         sb.append("\n");
         sb.append(String.format("\tprefix string is %s\n", prefixExpr.toString()));
         sb.append(String.format("\tattackable string is %s\n", attackableExpr.toString()));
+        //sb.append(String.format("\tattackable Expression is %s\n", attackableExpr.genJsonExpression()));
         sb.append(String.format("\tpostfix string is %s", postfixExpr.toString()));
         return sb.toString();
     }

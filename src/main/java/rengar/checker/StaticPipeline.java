@@ -2,6 +2,7 @@ package rengar.checker;
 
 import rengar.checker.attack.AttackString;
 import rengar.checker.pattern.*;
+import rengar.checker.vulnerability.Vulnerability;
 import rengar.config.GlobalConfig;
 import rengar.dynamic.validator.Validator;
 import rengar.parser.ReDosHunterPreProcess;
@@ -66,6 +67,7 @@ public class StaticPipeline {
         Result result = new Result();
         result.state = Result.State.Normal;
 
+        // preprocess: 正規表現を解析できる形に正規化（文字列的として置き換える）
         if (!GlobalConfig.option.isDisablePreprocess()) {
             // step 1. rengar.preprocess regex string
             patternStr = ReDosHunterPreProcess.process(patternStr);
@@ -81,6 +83,8 @@ public class StaticPipeline {
         DisturbFreeChecker checker;
         try {
             checker = new DisturbFreeChecker(patternStr, language);
+            // print AST
+            System.out.println(String.format("regex AST: %s", checker.getRegexExpr().genJsonExpression()));
             //rengar.checker.analyse();
         } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
@@ -97,6 +101,7 @@ public class StaticPipeline {
         }
 
         List<DisturbFreePattern> patternList = checker.getFreePatterns();
+        List<Vulnerability> vulnerabilities = new LinkedList<>();
         for (DisturbFreePattern pattern : patternList) {
             if (Thread.currentThread().isInterrupted())
                 return null;
@@ -105,11 +110,30 @@ public class StaticPipeline {
                 if (attackStr != null) {
                     result.state = Result.State.Vulnerable;
                     result.add(pattern, attackStr);
+                    if (pattern.getPattern() instanceof POAPattern){
+                        POAPattern poa = (POAPattern) pattern.getPattern();
+                        vulnerabilities.add(new Vulnerability(poa, attackStr));
+                    }
                     if (!findAll)
                         break;
                 }
             } catch (PatternSyntaxException ignored) {}
         }
+
+        System.out.println("[");
+        // 複数のvulnerabilityをmergeする
+        for(Vulnerability vuln: vulnerabilities){
+            System.out.print("{\"attackable\":");
+            System.out.print(vuln.getReDoSPattern().getAttackableExpr().genJsonExpression());
+            System.out.print(",\"preLoop\":");
+            System.out.print(vuln.getReDoSPattern().getPreLoopExpr().genJsonExpression());
+            System.out.print(",\"middle\":");
+            System.out.print(vuln.getReDoSPattern().getMiddleSequenceExpr().genJsonExpression());
+            System.out.print(",\"postLoop\":");
+            System.out.print(vuln.getReDoSPattern().getPostLoopExpr().genJsonExpression());
+            System.out.print("}\n,");
+        }
+        System.out.println("]");
 
         long endTime = System.currentTimeMillis();
         result.runningTime = endTime - startTime;

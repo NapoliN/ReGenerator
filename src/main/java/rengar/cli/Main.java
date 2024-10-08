@@ -18,7 +18,7 @@ public class Main {
     private final static Options options = new Options();
     private final static CommandLineParser cliParser = new DefaultParser();
     private final static HelpFormatter helpFormatter = new HelpFormatter();
-
+    
     public static void main(String[] args) throws IOException {
         CommandLine cli = initCommandArgument(args);
         if (cli.hasOption("disablePreprocess"))

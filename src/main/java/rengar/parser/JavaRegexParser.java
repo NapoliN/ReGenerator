@@ -28,6 +28,7 @@ class JavaRegexParser extends RegexParser {
     // Alternative -> Sequence (Sequence '|')*
     BranchExpr parseAlternative() throws PatternSyntaxException {
         BranchExpr branchExpr = new BranchExpr();
+        branchExpr.setExprId(popExprId());
         while (true) {
             SequenceExpr joinExpr = parseSequence();
             branchExpr.add(joinExpr);
@@ -41,6 +42,7 @@ class JavaRegexParser extends RegexParser {
     // Sequence -> factor*
     SequenceExpr parseSequence() throws PatternSyntaxException {
         SequenceExpr seqExpr = new SequenceExpr();
+        seqExpr.setExprId(popExprId());
         LOOP:
         while (true) {
             Expr tmpExpr;
@@ -49,10 +51,12 @@ class JavaRegexParser extends RegexParser {
                 case '^':
                     read();
                     tmpExpr = new BeginExpr();
+                    tmpExpr.setExprId(popExprId());
                     break;
                 case '$':
                     read();
                     tmpExpr = new EndExpr();
+                    tmpExpr.setExprId(popExprId());
                     break;
                 case '.':
                     read();
@@ -61,6 +65,7 @@ class JavaRegexParser extends RegexParser {
                     charRangeExpr.negate();
                     charRangeExpr.setStr(".");
                     tmpExpr = charRangeExpr;
+                    tmpExpr.setExprId(popExprId());
                     break;
                 case '[':
                     read(); // eat [
@@ -105,6 +110,8 @@ class JavaRegexParser extends RegexParser {
         int min = 0, max = 0;
         // if we find that this is no loop, we will set `isLoop` to false
         boolean isLoop = true;
+
+        int id = popExprId();
 
         // firstly, we determine the upper and lower bounds of the loop
         // by checking the quantifier
@@ -159,6 +166,9 @@ class JavaRegexParser extends RegexParser {
             }
         }
         loopExpr = new LoopExpr(min, max, type, body);
+        // exchange the id of loopExpr and body
+        loopExpr.setExprId(body.getExprId());
+        body.setExprId(id);
         return loopExpr;
     }
 
@@ -183,6 +193,7 @@ class JavaRegexParser extends RegexParser {
                     if (isNot)
                         sumExpr.negate();
                     sumExpr.setStr(patternStr.substring(beginPos, pos));
+                    sumExpr.setExprId(popExprId());
                     return sumExpr;
                 case '[':
                     read(); // eat [
@@ -220,6 +231,7 @@ class JavaRegexParser extends RegexParser {
         Expr resultExpr;
         int beginPos = pos;
         int c = peek();
+        int id = popExprId();
         // <case 1>. process escape character
         if (c == '\\') {
             read(); // eat \
@@ -267,6 +279,7 @@ class JavaRegexParser extends RegexParser {
             resultExpr = new CharRangeExpr();
             ((CharRangeExpr)resultExpr).addRange(beginExpr.getChar(), endExpr.getChar());
         }
+        resultExpr.setExprId(id);
         return resultExpr;
     }
 
@@ -323,6 +336,7 @@ class JavaRegexParser extends RegexParser {
         if (isNeg) {
             expr.negate();
         }
+        //expr.setExprId(popExprId());
         return expr;
     }
 
@@ -496,11 +510,13 @@ class JavaRegexParser extends RegexParser {
                 expr = new SingleCharExpr(escapeChar);
             }
         }
+        //expr.setExprId(popExprId());
         return expr;
     }
 
     Expr parseGroup() throws PatternSyntaxException {
         Expr resultExpr = null;
+        int id = popExprId();
         int c = peek();
         if (c == '?') {
             read(); // eat ?
@@ -592,6 +608,9 @@ class JavaRegexParser extends RegexParser {
         }
         expect(')', "Unclosed group");
         // when group is inline match flag group and doesn't have body, it will return null
+        if(resultExpr != null){
+            resultExpr.setExprId(id);
+        }
         return resultExpr;
     }
 

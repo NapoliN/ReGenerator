@@ -2,6 +2,7 @@ package rengar.checker;
 
 import rengar.checker.pattern.DisturbFreePattern;
 import rengar.checker.pattern.ReDoSPattern;
+import rengar.checker.util.RegexUtil;
 import rengar.config.GlobalConfig;
 import rengar.parser.RegexParser;
 import rengar.parser.ast.BranchExpr;
@@ -17,6 +18,16 @@ import java.util.concurrent.TimeUnit;
 public class DisturbFreeChecker {
     private final Set<DisturbFreePattern> freePatterns = new HashSet<>();
 
+    private RegexExpr regexExpr;
+
+    public RegexExpr getRegexExpr(){
+        return regexExpr;
+    }
+
+    public RegexExpr getFlattenRegexExpr(){
+        return RegexUtil.preprocessForPoaSlq(regexExpr);
+    }
+
     private boolean hasBranch = false;
     public List<DisturbFreePattern> getFreePatterns() {
         return freePatterns.stream().toList();
@@ -24,10 +35,12 @@ public class DisturbFreeChecker {
 
     public DisturbFreeChecker(String patternStr, RegexParser.Language lanType) throws PatternSyntaxException {
         RegexParser parser = RegexParser.createParser(lanType, patternStr);
-        RegexExpr regexExpr = parser.parse();
+        regexExpr = parser.parse();
         analyse(regexExpr);
     }
 
+    // 静的解析を行う
+    // 候補を返り値として返す
     private List<ReDoSPattern> getPatternsOf(RegexExpr regexExpr) {
         ReDoSChecker checker = new ReDoSChecker(regexExpr);
         checker.analyse();
@@ -37,6 +50,9 @@ public class DisturbFreeChecker {
     public boolean hasBranch() {
         return hasBranch;
     }
+
+    // 静的解析
+    // 結果はfreePatternsに格納される
     public void analyse(RegexExpr root) {
         Future<Void> future = GlobalConfig.executor.submit(() -> {
             RegexExpr regexExpr = root.copy();

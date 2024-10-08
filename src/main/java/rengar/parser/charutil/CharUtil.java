@@ -58,7 +58,7 @@ public class CharUtil {
             case '\n' -> res = "\\n";
             case '\t' -> res = "\\t";
             case '\f' -> res = "\\f";
-            case '\"' -> res = "\"";
+            case '\"' -> res = "\\\"";
             default -> {
                 if (codePoint >= 32 && codePoint < 127) {
                     res = Character.toString(codePoint);

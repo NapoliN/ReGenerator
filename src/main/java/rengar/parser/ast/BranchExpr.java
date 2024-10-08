@@ -28,6 +28,22 @@ public class BranchExpr extends Expr implements Iterable<SequenceExpr> {
         return branchs;
     }
 
+    public String genJsonExpression() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Branch\",");
+        sb.append("\"branchs\": [");
+        sb.append(branchs.get(0).genJsonExpression());
+        for (int i = 1; i < branchs.size(); i++) {
+            sb.append(",");
+            sb.append(branchs.get(i).genJsonExpression());
+        }
+        sb.append("]");
+        sb.append("}");
+        return sb.toString();
+    }
+
     @Override
     public String genString() {
         if (branchs.size() == 0)
@@ -44,6 +60,7 @@ public class BranchExpr extends Expr implements Iterable<SequenceExpr> {
     @Override
     public BranchExpr copy() {
         BranchExpr newBranchExpr = new BranchExpr();
+        newBranchExpr.setExprId(getExprId());
         for (SequenceExpr branch : branchs) {
             newBranchExpr.add(branch.copy());
         }

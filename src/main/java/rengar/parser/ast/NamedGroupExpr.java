@@ -18,6 +18,22 @@ public class NamedGroupExpr extends GroupExpr {
     }
 
     @Override
+    public String genJsonExpression() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Group\",");
+        sb.append("\"name\": ");
+        sb.append("\"");
+        sb.append(getName());
+        sb.append("\", ");
+        sb.append("\"body\": ");
+        sb.append(getBody().genJsonExpression());
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(?<");
@@ -30,6 +46,8 @@ public class NamedGroupExpr extends GroupExpr {
 
     @Override
     public NamedGroupExpr copy() {
-        return new NamedGroupExpr(getBody().copy(), index, new String(name));
+        NamedGroupExpr newNamedGroupExpr = new NamedGroupExpr(getBody().copy(), index, new String(name));
+        newNamedGroupExpr.setExprId(getExprId());
+        return newNamedGroupExpr;
     }
 }

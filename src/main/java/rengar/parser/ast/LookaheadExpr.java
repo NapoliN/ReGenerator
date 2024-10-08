@@ -6,6 +6,16 @@ public class LookaheadExpr extends LookaroundExpr {
     }
 
     @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"LookAround\"");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(?");
@@ -20,6 +30,8 @@ public class LookaheadExpr extends LookaroundExpr {
 
     @Override
     public LookaheadExpr copy() {
-        return new LookaheadExpr(cond.copy(), isNot);
+        LookaheadExpr newLookaheadExpr = new LookaheadExpr(cond.copy(), isNot);
+        newLookaheadExpr.setExprId(getExprId());
+        return newLookaheadExpr;
     }
 }

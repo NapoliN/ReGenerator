@@ -8,6 +8,18 @@ public class IndependentGroupExpr extends GroupExpr {
     }
 
     @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"Group\",");
+        sb.append("\"body\": ");
+        sb.append(getBody().genJsonExpression());
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(?>");
@@ -18,6 +30,8 @@ public class IndependentGroupExpr extends GroupExpr {
 
     @Override
     public IndependentGroupExpr copy() {
-        return new IndependentGroupExpr(getBody().copy());
+        IndependentGroupExpr newIndependentGroupExpr = new IndependentGroupExpr(getBody().copy());
+        newIndependentGroupExpr.setExprId(getExprId());
+        return newIndependentGroupExpr;
     }
 }

@@ -886,6 +886,7 @@ public final class Pattern
      * of the expression which will create the object tree.
      */
     private void compile() {
+        //System.out.println("Compiling pattern: " + pattern);
         // Handle canonical equivalences
         if (has(CANON_EQ) && !has(LITERAL)) {
             normalize();
@@ -954,6 +955,8 @@ public final class Pattern
         groupNodes = null;
         patternLength = 0;
         compiled = true;
+
+        //Pattern.printObjectTree(root);
     }
 
     Map<String, Integer> namedGroups() {

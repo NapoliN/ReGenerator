@@ -7,6 +7,16 @@ public class LookbehindExpr extends LookaroundExpr {
     }
 
     @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"LookAround\"");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
         sb.append("(?<");
@@ -21,6 +31,8 @@ public class LookbehindExpr extends LookaroundExpr {
 
     @Override
     public LookbehindExpr copy() {
-        return new LookbehindExpr(cond.copy(), isNot);
+        LookbehindExpr newLookbehindExpr = new LookbehindExpr(cond.copy(), isNot);
+        newLookbehindExpr.setExprId(getExprId());
+        return newLookbehindExpr;
     }
 }

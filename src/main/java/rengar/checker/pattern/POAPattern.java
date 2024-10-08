@@ -12,6 +12,18 @@ public class POAPattern extends SpecialPattern {
     private final SequenceExpr r;
     private final LoopExpr c2;
 
+    public LoopExpr getPreLoopExpr(){
+        return c1;
+    }
+
+    public SequenceExpr getMiddleSequenceExpr(){
+        return r;
+    }
+
+    public LoopExpr getPostLoopExpr(){
+        return c2;
+    }
+
     public POAPattern(RegexExpr regexExpr, Expr attackableExpr,
                       SequenceExpr upperLevelExpr, int condition,
                       LoopExpr c1, LoopExpr c2, SequenceExpr r) {

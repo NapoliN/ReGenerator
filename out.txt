@@ -1,0 +1,720 @@
+24-08-2024 20:25:56 pattern string &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+ReDosHunter rengar.preprocess result &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+regex AST: {"id": 1,"type": "Branch","branchs": [{"id": 2,"type": "Sequence","sequences": [{"id": 3,"type": "Char", "subtype": "Single", "char": "&"},{"id": 5,"type": "Char", "subtype": "Single", "char": "#"},{"id": 7,"type": "Char", "subtype": "Single", "char": "8"},{"id": 9,"type": "Char", "subtype": "Single", "char": "2"},{"id": 11,"type": "Char", "subtype": "Single", "char": "1"},{"id": 13,"type": "Char", "subtype": "Single", "char": "2"},{"id": 15,"type": "Char", "subtype": "Single", "char": ";"},{"id": 17,"type": "Char", "subtype": "Single", "char": "<"},{"id": 19,"type": "Char", "subtype": "Single", "char": "/"},{"id": 21,"type": "Char", "subtype": "Single", "char": "s"},{"id": 23,"type": "Char", "subtype": "Single", "char": "p"},{"id": 25,"type": "Char", "subtype": "Single", "char": "a"},{"id": 27,"type": "Char", "subtype": "Single", "char": "n"},{"id": 29,"type": "Char", "subtype": "Single", "char": ">"},{"id": 31,"type": "Char", "subtype": "Single", "char": " "},{"id": 33,"type": "Group","body": {"id": 34,"type": "Branch","branchs": [{"id": 35,"type": "Sequence","sequences": [{"id": 37,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 36,"type": "Char", "subtype": "Any"}}]}]}},{"id": 39,"type": "Char", "subtype": "Single", "char": " "},{"id": 41,"type": "Char", "subtype": "Single", "char": "<"},{"id": 43,"type": "Char", "subtype": "Single", "char": "a"},{"id": 46,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 45,"type": "Char", "subtype": "Any"}},{"id": 47,"type": "Char", "subtype": "Single", "char": "h"},{"id": 49,"type": "Char", "subtype": "Single", "char": "r"},{"id": 51,"type": "Char", "subtype": "Single", "char": "e"},{"id": 53,"type": "Char", "subtype": "Single", "char": "f"},{"id": 55,"type": "Char", "subtype": "Single", "char": "="},{"id": 57,"type": "Char", "subtype": "Single", "char": "\""},{"id": 59,"type": "Group","body": {"id": 60,"type": "Branch","branchs": [{"id": 61,"type": "Sequence","sequences": [{"id": 63,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 62,"type": "Char", "subtype": "Any"}}]}]}},{"id": 65,"type": "Char", "subtype": "Single", "char": "\""},{"id": 67,"type": "Char", "subtype": "Single", "char": ">"},{"id": 69,"type": "Char", "subtype": "Single", "char": "C"},{"id": 71,"type": "Char", "subtype": "Single", "char": "H"},{"id": 73,"type": "Group","body": {"id": 74,"type": "Branch","branchs": [{"id": 75,"type": "Sequence","sequences": [{"id": 77,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 76,"type": "Char", "subtype": "Any"}}]}]}},{"id": 79,"type": "Char", "subtype": "Single", "char": "<"},{"id": 82,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 81,"type": "Char", "subtype": "Any"}},{"id": 83,"type": "Char", "subtype": "Single", "char": "/"},{"id": 85,"type": "Char", "subtype": "Single", "char": ">"},{"id": 87,"type": "Group","body": {"id": 88,"type": "Branch","branchs": [{"id": 89,"type": "Sequence","sequences": [{"id": 91,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": 90,"type": "Char", "subtype": "Any"}}]}]}},{"id": 93,"type": "Char", "subtype": "Single", "char": " "},{"id": 95,"type": "Char", "subtype": "Single", "char": "<"}]}]}
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is href=\".+?\">CH.+?<.+?/>.+? <
+try "&#8212;</span> " + "\u0000 <a" * 3750 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\u0000\">CH\u0000\u0000\u0000<\u0000\u0000/>" * 1071 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "&#8212;</span> " + "\u0000\u0000\u0000 <a\u0000href=\"" * 1153 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<
+	attackable string is .+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000<" + "\u0000\u0000\u0000\u0000/>" * 2500 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is href=\".+?\">CH.+?<.+?/>.+? <
+try "&#8212;</span> " + "\u0000\u0000\u0000\u0000 <a" * 2142 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\u0000\">CH\u0000\u0000<\u0000\u0000/>" * 1153 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "&#8212;</span> " + "\u0000\u0000\u0000 <a\u0000href=\"" * 1153 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<
+	attackable string is .+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000<" + "\u0000\u0000/>" * 3750 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> \u0000 <a" + "\u0000href=\"\u0000\u0000\u0000\">CH" * 1071 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> " + "\u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000/>" * 714 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\u0000\u0000\u0000\">CH\u0000\u0000<" * 1363 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> " + "\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000<" * 714 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> " + "\u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000/>" * 714 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\">CH\u0000\u0000<" * 1875 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> " + "\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000<" * 714 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> \u0000 <a" + "\u0000href=\"\u0000\u0000\u0000\">CH" * 1071 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is href=\".+?\">CH.+?<.+?/>.+? <
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000" * 434 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000\u0000 <a" * 434 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000" * 434 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a" * 454 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000" * 454 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000" * 434 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000" * 454 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000" * 454 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000" * 434 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000\u0000" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000\u0000" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000\u0000\u0000 <a" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a" * 500 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000" * 476 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000" * 500 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a" * 476 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000\u0000 <a\u0000" * 416 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000" * 476 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> " + "\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 789 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a" + "\u0000href=\"\u0000\">CH\u0000\u0000<\u0000/>" * 833 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\u0000\u0000\u0000\u0000\">CH" * 1666 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH
+	attackable string is .+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000\">CH" + "\u0000<\u0000\u0000\u0000/>" * 2142 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+try "" + "&#8212;</span> \u0000\u0000\u0000\u0000\u0000" * 500 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000\u0000\u0000 <a" + "\u0000href=\"\u0000\u0000\">CH\u0000\u0000<" * 937 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "&#8212;</span> \u0000 <a" + "\u0000\u0000\u0000href=\"" * 1666 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"" * 370 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000href=\"" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"" * 384 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000" * 370 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"" * 370 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"" * 384 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000\u0000href=\"" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000" * 370 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"" * 370 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000" * 357 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"" * 370 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000href=\"\u0000\u0000" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"" * 333 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"" * 357 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000\u0000\u0000href=\"\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"\u0000" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\u0000" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"" * 344 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000href=\"" * 333 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000\u0000\u0000 <a" + "\u0000href=\"\u0000\u0000\u0000\u0000\">CH\u0000<" * 882 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "&#8212;</span> \u0000\u0000\u0000 <a" + "\u0000\u0000\u0000\u0000href=\"" * 1500 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is \">CH.+?<.+?/>.+? <
+try "" + "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000href=\"" * 344 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is href=\".+?\">CH.+?<.+?/>.+? <
+try "" + "&#8212;</span> \u0000\u0000\u0000 <a" * 476 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> 
+	attackable string is .+? <a.+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> " + "\u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 789 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a
+	attackable string is .+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a" + "\u0000\u0000href=\"\u0000\">CH\u0000\u0000<\u0000\u0000/>" * 750 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\"
+	attackable string is .+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "&#8212;</span> \u0000\u0000\u0000\u0000 <a\u0000\u0000\u0000href=\"" + "\u0000\u0000\u0000\u0000\u0000\">CH" * 1666 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH
+	attackable string is .+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\u0000\">CH" + "\u0000<\u0000\u0000\u0000/>" * 2142 + "\n\n\n\n\n\n" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+try "\u0000" + "&#8212;</span> \u0000\u0000\u0000\u0000\u0000" * 500 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH
+	attackable string is .+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\">CH" + "\u0000\u0000<" * 5000 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 285 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000" * 312 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 285 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH" * 312 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH" * 312 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH" * 312 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH" * 312 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 277 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH" * 312 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH" * 312 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH" * 312 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 285 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH" * 312 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH" * 312 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 277 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 285 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000" * 312 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000" * 312 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 303 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000\u0000" * 285 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\">CH\u0000" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH\u0000" * 285 + "\n\n\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000\u0000href=\"\u0000\u0000\">CH" * 303 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000\u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 294 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000\u0000" * 303 + "\n\u0000\n\n\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000/>" * 277 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\">CH\u0000<\u0000/>" * 277 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span>  <ahref=\"\">CH</>" * 322 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+try "\u0000" + "&#8212;</span>  <ahref=\"\">CH</>" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+FAILED
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is  <
+try "" + "&#8212;</span>  <ahref=\"\">CH</>" * 322 + "\n\u0000\n\u0000\n\u0000" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <POLS_1>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is 
+	attackable string is &#8212;</span> .+? <a.+?href=\".+?\">CH.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Char", "subtype": "Single", "char": "&"},{"id": -1,"type": "Char", "subtype": "Single", "char": "#"},{"id": -1,"type": "Char", "subtype": "Single", "char": "8"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": "1"},{"id": -1,"type": "Char", "subtype": "Single", "char": "2"},{"id": -1,"type": "Char", "subtype": "Single", "char": ";"},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "/"},{"id": -1,"type": "Char", "subtype": "Single", "char": "s"},{"id": -1,"type": "Char", "subtype": "Single", "char": "p"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Char", "subtype": "Single", "char": "n"},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": " "},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Char", "subtype": "Single", "char": "a"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "h"},{"id": -1,"type": "Char", "subtype": "Single", "char": "r"},{"id": -1,"type": "Char", "subtype": "Single", "char": "e"},{"id": -1,"type": "Char", "subtype": "Single", "char": "f"},{"id": -1,"type": "Char", "subtype": "Single", "char": "="},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "\""},{"id": -1,"type": "Char", "subtype": "Single", "char": ">"},{"id": -1,"type": "Char", "subtype": "Single", "char": "C"},{"id": -1,"type": "Char", "subtype": "Single", "char": "H"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is <.+?/>.+? <
+try "" + "&#8212;</span> \u0000 <a\u0000href=\"\u0000\u0000\">CH\u0000\u0000" * 294 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+Type: <PTLS_4>
+	&#8212;</span> .+? <a.+?href=\".+?\">CH.+?<.+?/>.+? <
+	prefix string is &#8212;</span> .+? <a.+?href=\".+?\">CH
+	attackable string is .+?<.+?
+	attackable Expression is {"id": -1,"type": "Sequence","sequences": [{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}},{"id": -1,"type": "Char", "subtype": "Single", "char": "<"},{"id": -1,"type": "Loop", "min": 1, "max": -1, "strategy": "Lazy", "body": {"id": -1,"type": "Char", "subtype": "Any"}}]}
+	postfix string is />.+? <
+try "&#8212;</span> \u0000 <a\u0000\u0000\u0000href=\"\u0000\">CH" + "\u0000\u0000<" * 5000 + "\n\n\n\t\nᄑ\n\u2222\n啕\n香" Compiling pattern: &#8212;</span> (.+?) <a.+?href=\"(.+?)\">CH(.+?)<.+?/>(.+?) <
+SUCCESS
+24-08-2024 20:26:01. It takes 4.644000 seconds
+{"Status":"Vulnerable","Details":[{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+ICIgKyAiXHUwMDAwIDxhIiAqIDM3NTAgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMCA8YVx1MDAwMFx1MDAwMFx1MDAwMGhyZWY9XCIiICsgIlx1MDAwMFx1MDAwMFwiPkNIXHUwMDAwXHUwMDAwXHUwMDAwPFx1MDAwMFx1MDAwMC8+IiAqIDEwNzEgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+ICIgKyAiXHUwMDAwXHUwMDAwXHUwMDAwIDxhXHUwMDAwaHJlZj1cIiIgKiAxMTUzICsgIlxuXG5cblxuXG5cbiI="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMFx1MDAwMCA8YVx1MDAwMGhyZWY9XCJcdTAwMDBcIj5DSFx1MDAwMFx1MDAwMDwiICsgIlx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMC8+IiAqIDI1MDAgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMCA8YSIgKyAiXHUwMDAwaHJlZj1cIlx1MDAwMFx1MDAwMFx1MDAwMFwiPkNIIiAqIDEwNzEgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+ICIgKyAiXHUwMDAwIDxhXHUwMDAwaHJlZj1cIlx1MDAwMFwiPkNIXHUwMDAwPFx1MDAwMC8+IiAqIDcxNCArICJcblxuXG5cblxuXG4i"},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMCA8YVx1MDAwMFx1MDAwMFx1MDAwMGhyZWY9XCIiICsgIlx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMFwiPkNIXHUwMDAwXHUwMDAwPCIgKiAxMzYzICsgIlxuXG5cblx0XG7hhJFcblx1MjIyMlxu5ZWVXG7pppki"},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+ICIgKyAiXHUwMDAwXHUwMDAwIDxhXHUwMDAwXHUwMDAwaHJlZj1cIlx1MDAwMFx1MDAwMFwiPkNIXHUwMDAwPCIgKiA3MTQgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+ICIgKyAiXHUwMDAwXHUwMDAwIDxhXHUwMDAwXHUwMDAwaHJlZj1cIlx1MDAwMFx1MDAwMFwiPkNIIiAqIDc4OSArICJcblxuXG5cblxuXG4i"},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMCA8YSIgKyAiXHUwMDAwaHJlZj1cIlx1MDAwMFwiPkNIXHUwMDAwXHUwMDAwPFx1MDAwMC8+IiAqIDgzMyArICJcblxuXG5cdFxu4YSRXG5cdTIyMjJcbuWVlVxu6aaZIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMCA8YVx1MDAwMFx1MDAwMFx1MDAwMGhyZWY9XCIiICsgIlx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMFx1MDAwMFwiPkNIIiAqIDE2NjYgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMCA8YVx1MDAwMGhyZWY9XCJcdTAwMDBcdTAwMDBcdTAwMDBcIj5DSCIgKyAiXHUwMDAwPFx1MDAwMFx1MDAwMFx1MDAwMC8+IiAqIDIxNDIgKyAiXG5cblxuXG5cblxuIg=="},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gXHUwMDAwXHUwMDAwXHUwMDAwXHUwMDAwXHUwMDAwIiAqIDUwMCArICJcblxuXG5cdFxu4YSRXG5cdTIyMjJcbuWVlVxu6aaZIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMFx1MDAwMFx1MDAwMCA8YSIgKyAiXHUwMDAwaHJlZj1cIlx1MDAwMFx1MDAwMFwiPkNIXHUwMDAwXHUwMDAwPCIgKiA5MzcgKyAiXG5cblxuXHRcbuGEkVxuXHUyMjIyXG7llZVcbummmSI="},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gXHUwMDAwIDxhXHUwMDAwaHJlZj1cIlx1MDAwMFwiPkNIXHUwMDAwPCIgKiAzMDMgKyAiXG5cdTAwMDBcblx1MDAwMFxuXHUwMDAwIg=="},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMCA8YSIgKyAiXHUwMDAwXHUwMDAwXHUwMDAwaHJlZj1cIiIgKiAxNjY2ICsgIlxuXG5cblx0XG7hhJFcblx1MjIyMlxu5ZWVXG7pppki"},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gXHUwMDAwXHUwMDAwXHUwMDAwXHUwMDAwIDxhXHUwMDAwaHJlZj1cIiIgKiAzNDQgKyAiXG5cdTAwMDBcblx1MDAwMFxuXHUwMDAwIg=="},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gXHUwMDAwXHUwMDAwXHUwMDAwIDxhIiAqIDQ3NiArICJcblx1MDAwMFxuXHUwMDAwXG5cdTAwMDAi"},{"Type":"PTLS_4","AttackString":"IiYjODIxMjs8L3NwYW4+IFx1MDAwMCA8YVx1MDAwMFx1MDAwMFx1MDAwMGhyZWY9XCJcdTAwMDBcIj5DSCIgKyAiXHUwMDAwXHUwMDAwPCIgKiA1MDAwICsgIlxuXG5cblx0XG7hhJFcblx1MjIyMlxu5ZWVXG7pppki"},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gIDxhaHJlZj1cIlwiPkNIPC8+IiAqIDMyMiArICJcblx1MDAwMFxuXHUwMDAwXG5cdTAwMDAi"},{"Type":"POLS_1","AttackString":"IiIgKyAiJiM4MjEyOzwvc3Bhbj4gXHUwMDAwIDxhXHUwMDAwaHJlZj1cIlx1MDAwMFx1MDAwMFwiPkNIXHUwMDAwXHUwMDAwIiAqIDI5NCArICJcblxuXG5cdFxu4YSRXG5cdTIyMjJcbuWVlVxu6aaZIg=="}],"Regex":"JiM4MjEyOzwvc3Bhbj4gKC4rPykgPGEuKz9ocmVmPVwiKC4rPylcIj5DSCguKz8pPC4rPy8+KC4rPykgPA==","DisturbType":["None","Case5"],"ID":0}

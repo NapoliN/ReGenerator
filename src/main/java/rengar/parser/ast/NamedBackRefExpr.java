@@ -12,6 +12,16 @@ public class NamedBackRefExpr extends BackRefExpr {
     }
 
     @Override
+    public String genJsonExpression(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        sb.append(String.format("\"id\": %d,",getExprId()));
+        sb.append("\"type\": \"BackRef\"");
+        sb.append("}");
+        return sb.toString();
+    }
+
+    @Override
     public String genString() {
         StringBuilder sb = new StringBuilder();
         sb.append("\\k<");
@@ -22,6 +32,8 @@ public class NamedBackRefExpr extends BackRefExpr {
 
     @Override
     public NamedBackRefExpr copy() {
-        return new NamedBackRefExpr(new String(name));
+        NamedBackRefExpr newNamedBackRefExpr = new NamedBackRefExpr(new String(name));
+        newNamedBackRefExpr.setExprId(getExprId());
+        return newNamedBackRefExpr;
     }
 }

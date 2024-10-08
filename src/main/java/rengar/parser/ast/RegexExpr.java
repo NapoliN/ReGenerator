@@ -11,12 +11,20 @@ public class RegexExpr extends Expr {
         return expr;
     }
 
+    public String genJsonExpression() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(expr.genJsonExpression());
+        return sb.toString();
+    }
+
     @Override
     public String genString() {
         return expr.genString();
     }
 
     public RegexExpr copy() {
-        return new RegexExpr(expr.copy());
+        RegexExpr newRegexExpr = new RegexExpr(expr.copy());
+        newRegexExpr.setExprId(getExprId());
+        return newRegexExpr;
     }
 }

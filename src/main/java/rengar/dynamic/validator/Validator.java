@@ -19,7 +19,7 @@ public class Validator {
         Matcher matcher = pattern.matcher(attackStr.genStr());
         matcher.setEarlyExit();
         try {
-            if (type.contains("SLQ")) {
+            if (type.contains("SLQ")) { //実装ミスで、本来はPOLSとしなければならない
                 matcher.find();
             } else {
                 matcher.matches();
