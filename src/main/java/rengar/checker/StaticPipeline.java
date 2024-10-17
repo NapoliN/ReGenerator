@@ -16,6 +16,8 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import rengar.checker.vulnerability.*;
+
 public class StaticPipeline {
     public static class Result {
         public enum State {
@@ -26,6 +28,7 @@ public class StaticPipeline {
         public long runningTime;
         public State state;
         public List<Pair<DisturbFreePattern, AttackString>> attacks = new LinkedList<>();
+        public List<Vulnerability> vulnerabilities = new ArrayList<>();
 
         public void add(DisturbFreePattern newPattern, AttackString newAttackString) {
             boolean isOK = true;
@@ -45,6 +48,31 @@ public class StaticPipeline {
             if (isOK) {
                 attacks.add(new Pair<>(newPattern, newAttackString));
             }
+        }
+
+        public void addVuln(Vulnerability vuln){
+            /**
+            Iterator<Vulnerability> iter = vulnerabilities.iterator();
+            while(iter.hasNext()){
+                var v = iter.next();
+                var compare = Vulnerability.compare(v, vuln);
+                if (compare == Vulnerability.Comparator.CONTAIN){
+                    iter.remove();
+                }
+                else if (compare == Vulnerability.Comparator.CONTAINED){
+                    return;
+                }
+            }
+            */
+            /** */
+            for (Vulnerability v: vulnerabilities){
+                var compare = Vulnerability.compare(v, vuln);
+                if (compare == Vulnerability.Comparator.EQUAL){
+                    //vuln.getAttackString().getPumpLength();
+                    return;
+                }
+            }
+            vulnerabilities.add(vuln);
         }
     }
 
@@ -101,7 +129,7 @@ public class StaticPipeline {
         }
 
         List<DisturbFreePattern> patternList = checker.getFreePatterns();
-        List<Vulnerability> vulnerabilities = new LinkedList<>();
+        var count = 0;
         for (DisturbFreePattern pattern : patternList) {
             if (Thread.currentThread().isInterrupted())
                 return null;
@@ -111,8 +139,9 @@ public class StaticPipeline {
                     result.state = Result.State.Vulnerable;
                     result.add(pattern, attackStr);
                     if (pattern.getPattern() instanceof POAPattern){
+                        count += 1;
                         POAPattern poa = (POAPattern) pattern.getPattern();
-                        vulnerabilities.add(new Vulnerability(poa, attackStr));
+                        result.addVuln(new Vulnerability(poa, attackStr, count));
                     }
                     if (!findAll)
                         break;
@@ -120,18 +149,41 @@ public class StaticPipeline {
             } catch (PatternSyntaxException ignored) {}
         }
 
+        System.out.println("Detected POA Vulnerabilities:"+ count);
+        System.out.println("Detected prime POA Vulnerabilities:"+ result.vulnerabilities.size());
+
+        DAG dag = new DAG();
+        for (int i=0; i < result.vulnerabilities.size(); i++){
+            Vulnerability vuln1 = result.vulnerabilities.get(i);
+            dag.addVulnerability(i, vuln1);
+            for (int j=i+1; j < result.vulnerabilities.size(); j++){
+                Vulnerability vuln2 = result.vulnerabilities.get(j);
+                var compare = Vulnerability.compare(vuln1, vuln2);
+                System.out.println(String.format("compare %d %d: %s", i, j, compare));
+                if (compare == Vulnerability.Comparator.PRECEED){
+                    dag.addEdge(i, j);
+                }
+                else if (compare == Vulnerability.Comparator.FOLLOW){
+                    dag.addEdge(j, i);
+                }
+            }
+        }
+
+        DAGDFS dfs = new DAGDFS(dag);
+        List<Integer> longestPath = dfs.findLongestIncreasingSequence();
+        System.out.println("Longest increasing sequence:");
+        for (int i=0; i < longestPath.size(); i++){
+            System.out.print(longestPath.get(i));
+            if (i != longestPath.size()-1){
+                System.out.print("->");
+            }
+        }
+        System.out.println("");
+
         System.out.println("[");
         // 複数のvulnerabilityをmergeする
-        for(Vulnerability vuln: vulnerabilities){
-            System.out.print("{\"attackable\":");
-            System.out.print(vuln.getReDoSPattern().getAttackableExpr().genJsonExpression());
-            System.out.print(",\"preLoop\":");
-            System.out.print(vuln.getReDoSPattern().getPreLoopExpr().genJsonExpression());
-            System.out.print(",\"middle\":");
-            System.out.print(vuln.getReDoSPattern().getMiddleSequenceExpr().genJsonExpression());
-            System.out.print(",\"postLoop\":");
-            System.out.print(vuln.getReDoSPattern().getPostLoopExpr().genJsonExpression());
-            System.out.print("}\n,");
+        for(Vulnerability vuln: result.vulnerabilities){
+            System.out.println(vuln.toJSONString());
         }
         System.out.println("]");
 
@@ -168,7 +220,7 @@ public class StaticPipeline {
         return results;
     }
 
-    private static AttackString handleReDoSPattern(String patternStr,
+    public static AttackString handleReDoSPattern(String patternStr,
                                                    DisturbFreePattern pattern,
                                               Result result)
             throws PatternSyntaxException {

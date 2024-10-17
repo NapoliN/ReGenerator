@@ -83,8 +83,10 @@ public class LoopExpr extends Expr {
     }
 
     public LoopExpr copy() {
-        LoopExpr newLoopExpr = new LoopExpr(min, max, type, body.copy());
+        Expr newExpr = body.copy();
+        LoopExpr newLoopExpr = new LoopExpr(min, max, type, newExpr);
         newLoopExpr.setExprId(getExprId());
+        newExpr.setParent(newLoopExpr);
         return newLoopExpr;
     }
 }

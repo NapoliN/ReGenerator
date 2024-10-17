@@ -27,7 +27,7 @@ public abstract class ReDoSPattern {
         split();
     }
 
-    public Expr getExpr() {
+    public RegexExpr getExpr() {
         return regexExpr;
     }
 

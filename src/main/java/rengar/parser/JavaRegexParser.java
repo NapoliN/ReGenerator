@@ -31,7 +31,9 @@ class JavaRegexParser extends RegexParser {
         branchExpr.setExprId(popExprId());
         while (true) {
             SequenceExpr joinExpr = parseSequence();
+            //System.out.println("JOIN EXPR: " + joinExpr.getExprId());
             branchExpr.add(joinExpr);
+            joinExpr.setParent(branchExpr);
             if (peek() != '|')
                 break;
             read(); // eat |
@@ -100,6 +102,7 @@ class JavaRegexParser extends RegexParser {
                 continue;
             tmpExpr = parseLoop(tmpExpr);
             seqExpr.add(tmpExpr);
+            tmpExpr.setParent(seqExpr);
         } // while (true)
         return seqExpr;
     }
@@ -169,6 +172,7 @@ class JavaRegexParser extends RegexParser {
         // exchange the id of loopExpr and body
         loopExpr.setExprId(body.getExprId());
         body.setExprId(id);
+        body.setParent(loopExpr);
         return loopExpr;
     }
 

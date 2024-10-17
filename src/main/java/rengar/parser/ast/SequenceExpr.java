@@ -39,11 +39,17 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
 
     @Override
     public SequenceExpr copy() {
+        System.out.println("Copy SequenceExpr");
         SequenceExpr newSeqExpr = new SequenceExpr();
+        //System.out.println("OLD EXPRID: " + this.getExprId());
         newSeqExpr.setExprId(getExprId());
+        //System.out.println("NEW EXPRID: " + newSeqExpr.getExprId());
         for (Expr expr : exprs) {
-            newSeqExpr.add(expr.copy());
+            Expr newExpr = expr.copy();
+            newSeqExpr.add(newExpr);
+            newExpr.setParent(newSeqExpr);
         }
+        
         return newSeqExpr;
     }
 

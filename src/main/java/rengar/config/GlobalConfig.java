@@ -4,7 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GlobalConfig {
-    public static final int MatchingStepUpperBound = 10000;
+    public static final int MatchingStepUpperBound = 30000;
     public static final int MaxYStringLengthForNQ = 45;
     public static final int MaxYStringLengthForEOD = 40;
     public static final int MaxYStringLengthForEOA = 120;

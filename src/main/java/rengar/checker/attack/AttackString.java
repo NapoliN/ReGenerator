@@ -68,6 +68,10 @@ public class AttackString {
         return false;
     }
 
+    public int getPumpLength(){
+        return this.attack.length;
+    }
+
     @Override
     public int hashCode() {
         return Arrays.hashCode(prefix) ^ Arrays.hashCode(attack) ^ Arrays.hashCode(postfix) ^ n;
