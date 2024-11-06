@@ -33,9 +33,8 @@ public class DisturbFreeChecker {
         return freePatterns.stream().toList();
     }
 
-    public DisturbFreeChecker(String patternStr, RegexParser.Language lanType) throws PatternSyntaxException {
-        RegexParser parser = RegexParser.createParser(lanType, patternStr);
-        regexExpr = parser.parse();
+    public DisturbFreeChecker(RegexExpr regexExpr) {
+        this.regexExpr = regexExpr;
         analyse(regexExpr);
     }
 

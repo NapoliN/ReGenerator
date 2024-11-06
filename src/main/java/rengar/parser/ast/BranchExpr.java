@@ -59,11 +59,9 @@ public class BranchExpr extends Expr implements Iterable<SequenceExpr> {
 
     @Override
     public BranchExpr copy() {
-        System.out.println("Copy BranchExpr");
         BranchExpr newBranchExpr = new BranchExpr();
         newBranchExpr.setExprId(getExprId());
         for (SequenceExpr branch : branchs) {
-            //System.out.println("OLD EXPRID1: " + branch.getExprId());
             SequenceExpr newExpr = branch.copy();
             newBranchExpr.add(newExpr);
             newExpr.setParent(newBranchExpr);

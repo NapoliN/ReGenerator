@@ -5,6 +5,10 @@ import rengar.parser.range.*;
 import java.util.*;
 
 public class Path {
+    /**
+     * TODO regexの構文木に対して、それぞれの要素がpath上でどのIDに対応していたのかのedgeを張る
+     * あるいはpathの各要素に対して、それを受理するCharExprへのedgeを張る
+     */
     private final List<CharRangeSet> path = new ArrayList<>();
     private DisturbType disturbType = new DisturbType();
 
@@ -90,6 +94,7 @@ public class Path {
             add(rangeSet);
     }
 
+    // 2つのパス集合のcartesian productを取って、それぞれのtupleでintersectをとったものを返す
     public static Set<Path> intersect(Set<Path> pathList1, Set<Path> path2List) {
         Set<Path> paths = new HashSet<>();
         for (Path path1 : pathList1) {
@@ -105,6 +110,7 @@ public class Path {
         return paths;
     }
 
+    // 2つ以上のパスの全てのintersectを取る
     static public Path intersect(Path... paths) {
         Path newPath = null;
         for (Path path : paths) {
@@ -117,6 +123,8 @@ public class Path {
         return newPath;
     }
 
+    // 2つのパスのintersectを取る
+    // ここでいうintersectとは、各indexで文字集合の共通部分を取る処理を指す
     public Path intersect(Path other) {
         assert path.size() == other.path.size();
         Path newPath = new Path();
@@ -128,11 +136,12 @@ public class Path {
         return newPath;
     }
 
+    // pathに対応する文字列(の、整数配列表現)を返す
     public int[] genValue() {
         int[] val = new int[path.size()];
         int i = 0;
         for (CharRangeSet rangeSet : path) {
-            assert rangeSet.isEmpty();
+            assert !rangeSet.isEmpty();
             val[i++] = rangeSet.getRanges().get(0).begin;
         }
         return val;

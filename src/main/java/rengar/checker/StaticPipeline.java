@@ -7,6 +7,7 @@ import rengar.config.GlobalConfig;
 import rengar.dynamic.validator.Validator;
 import rengar.parser.ReDosHunterPreProcess;
 import rengar.parser.RegexParser;
+import rengar.parser.ast.RegexExpr;
 import rengar.parser.exception.PatternSyntaxException;
 import rengar.util.Pair;
 import java.text.*;
@@ -51,28 +52,24 @@ public class StaticPipeline {
         }
 
         public void addVuln(Vulnerability vuln){
-            /**
-            Iterator<Vulnerability> iter = vulnerabilities.iterator();
-            while(iter.hasNext()){
-                var v = iter.next();
-                var compare = Vulnerability.compare(v, vuln);
-                if (compare == Vulnerability.Comparator.CONTAIN){
-                    iter.remove();
-                }
-                else if (compare == Vulnerability.Comparator.CONTAINED){
-                    return;
-                }
-            }
-            */
-            /** */
-            for (Vulnerability v: vulnerabilities){
-                var compare = Vulnerability.compare(v, vuln);
-                if (compare == Vulnerability.Comparator.EQUAL){
-                    //vuln.getAttackString().getPumpLength();
-                    return;
-                }
-            }
             vulnerabilities.add(vuln);
+        }
+
+        public void printVulnerabilitiesAST(){
+            System.out.println("hoge");
+            StringBuilder sb = new StringBuilder();
+            // [を出力
+            sb.append("[");
+            for (int i=0; i < vulnerabilities.size(); i++){
+                Vulnerability vuln = vulnerabilities.get(i);
+                sb.append(vuln.toJSONString());
+                if (i != vulnerabilities.size()-1){
+                    sb.append(",");
+                }
+            }
+            // ]を出力
+            sb.append("]");
+            System.out.println(sb.toString());
         }
     }
 
@@ -83,6 +80,8 @@ public class StaticPipeline {
         try {
             return future.get(GlobalConfig.option.getTotalTimeout(), TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException ignored) {
+            // スタックトレースの出力
+            ignored.printStackTrace();
             future.cancel(true);
             return null;
         }
@@ -97,7 +96,6 @@ public class StaticPipeline {
 
         // preprocess: 正規表現を解析できる形に正規化（文字列的として置き換える）
         if (!GlobalConfig.option.isDisablePreprocess()) {
-            // step 1. rengar.preprocess regex string
             patternStr = ReDosHunterPreProcess.process(patternStr);
             if (patternStr == null) {
                 result.state = Result.State.SyntaxError;
@@ -107,19 +105,26 @@ public class StaticPipeline {
             if (!GlobalConfig.option.isQuiet())
                 System.out.printf("ReDosHunter rengar.preprocess result %s\n", patternStr);
         }
-        // step 2. detect ReDoS pattern
-        DisturbFreeChecker checker;
+
+        // step 1. parse regex string
+        RegexExpr targetExpr;
         try {
-            checker = new DisturbFreeChecker(patternStr, language);
-            // print AST
-            System.out.println(String.format("regex AST: %s", checker.getRegexExpr().genJsonExpression()));
-            //rengar.checker.analyse();
-        } catch (PatternSyntaxException e) {
+            RegexParser parser = RegexParser.createParser(language, patternStr);
+            targetExpr = parser.parse();
+            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
+        }
+        catch (PatternSyntaxException e){
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
             result.state = Result.State.SyntaxError;
             result.runningTime = System.currentTimeMillis() - startTime;
             return result;
+        }
+
+        // step 2. detect ReDoS pattern
+        DisturbFreeChecker checker;
+        try {
+            checker = new DisturbFreeChecker(targetExpr);
         } catch (Exception | StackOverflowError | OutOfMemoryError e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
@@ -149,17 +154,17 @@ public class StaticPipeline {
             } catch (PatternSyntaxException ignored) {}
         }
 
-        System.out.println("Detected POA Vulnerabilities:"+ count);
-        System.out.println("Detected prime POA Vulnerabilities:"+ result.vulnerabilities.size());
+        System.out.println("conventional analysis finished");
+        result.printVulnerabilitiesAST();
 
+        // グラフを構築
         DAG dag = new DAG();
         for (int i=0; i < result.vulnerabilities.size(); i++){
             Vulnerability vuln1 = result.vulnerabilities.get(i);
-            dag.addVulnerability(i, vuln1);
+            dag.addNode(i);
             for (int j=i+1; j < result.vulnerabilities.size(); j++){
                 Vulnerability vuln2 = result.vulnerabilities.get(j);
                 var compare = Vulnerability.compare(vuln1, vuln2);
-                System.out.println(String.format("compare %d %d: %s", i, j, compare));
                 if (compare == Vulnerability.Comparator.PRECEED){
                     dag.addEdge(i, j);
                 }
@@ -169,24 +174,27 @@ public class StaticPipeline {
             }
         }
 
+        System.out.println("DAG constructed");
+
+        // 最長増加列を求める
         DAGDFS dfs = new DAGDFS(dag);
         List<Integer> longestPath = dfs.findLongestIncreasingSequence();
-        System.out.println("Longest increasing sequence:");
+        // longestPathを出力する
+        System.out.println("Longest Path:");
         for (int i=0; i < longestPath.size(); i++){
-            System.out.print(longestPath.get(i));
-            if (i != longestPath.size()-1){
-                System.out.print("->");
-            }
+            System.out.printf("%d ",longestPath.get(i));
         }
-        System.out.println("");
+        System.out.println();
 
-        System.out.println("[");
-        // 複数のvulnerabilityをmergeする
-        for(Vulnerability vuln: result.vulnerabilities){
-            System.out.println(vuln.toJSONString());
+        List<Vulnerability> longestVuln = new ArrayList<>();
+        for (int i=0; i < longestPath.size(); i++){
+            longestVuln.add(result.vulnerabilities.get(longestPath.get(i)));
         }
-        System.out.println("]");
-
+        
+        MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
+        MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
+        System.out.println(multiVulnAttackString.genReadableString());
+        
         long endTime = System.currentTimeMillis();
         result.runningTime = endTime - startTime;
         if (!GlobalConfig.option.isQuiet())

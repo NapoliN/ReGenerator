@@ -1,6 +1,7 @@
 package rengar.parser.ast;
 
 import java.util.*;
+import java.lang.IndexOutOfBoundsException;
 
 // just a wrapper
 public class RegexExpr extends Expr {
@@ -30,27 +31,49 @@ public class RegexExpr extends Expr {
     }
 
     public RegexExpr copy() {
-        System.out.println("Copy RegexExpr");
         RegexExpr newRegexExpr = new RegexExpr(expr.copy());
         newRegexExpr.setExprId(getExprId());
         return newRegexExpr;
     }
 
-    public Expr getCommonAncestor(int id1, int id2) {
+    /**
+     * 2つのExprの共通の祖先Exprのうち、最も近いExprを取得する
+     * @param id1
+     * @param id2
+     * @return 2つのExprの共通の祖先Expr
+     * @throws IndexOutOfBoundsException 指定したIDが存在しない場合
+     */
+    public Expr getCommonAncestor(int id1, int id2) throws IndexOutOfBoundsException {
         Expr expr1 = getExprById(id1, expr);
         Expr expr2 = getExprById(id2, expr);
         if (expr1 == null || expr2 == null) {
-            return null;
+            throw new IndexOutOfBoundsException();
         }
-        expr1.setAncestors();
-        expr2.setAncestors();
+        if (id1 == id2) {
+            return expr1;
+        }
+
+        List<Integer> ancestors1 = expr1.getAncestors();
+        List<Integer> ancestors2 = expr2.getAncestors();
+        // ancestor1を表示
+        System.out.println("ancestors1" + ancestors1);
+        // ancestor2を表示
+        System.out.println("ancestors2" + ancestors2);
+        
         int i = 0;
-        while (i < expr1.ancestors.size() && i < expr2.ancestors.size() && expr1.ancestors.get(i) == expr2.ancestors.get(i)) {
+        while (i < ancestors1.size() && i < ancestors2.size() && ancestors1.get(i) == ancestors2.get(i)) {
             i++;
         }
-        return expr1.ancestors.get(i - 1);
+        System.out.println("anecstor_i" + i);
+        return getExprById(ancestors1.get(i - 1), expr);
     }
 
+    /**
+     * 指定したIDのExprを取得する
+     * @param id 取得したいExprのID
+     * @param expr 探索対象のroot Expr
+     * @return 指定したIDのExpr、存在しない場合はnull
+     */
     private Expr getExprById(int id, Expr expr) {
         if (exprMap.containsKey(id)) {
             return exprMap.get(id);
@@ -80,6 +103,10 @@ public class RegexExpr extends Expr {
                         return result;
                     }
                 break;
+            case GroupExpr groupExpr:
+                Expr groupBody = getExprById(id, groupExpr.getBody().getExpr());
+                if (groupBody != null)
+                    return groupBody;
             default:
                 break;
         }

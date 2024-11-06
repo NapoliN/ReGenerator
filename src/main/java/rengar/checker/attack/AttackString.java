@@ -40,6 +40,22 @@ public class AttackString {
         this.postfix = postfix;
     }
 
+    public int[] getPrefix() {
+        return prefix;
+    }
+
+    public int[] getAttack() {
+        return attack;
+    }
+
+    public int getN() {
+        return n;
+    }
+
+    public int[] getPostfix() {
+        return postfix;
+    }
+
     public String genStr() {
         StringBuilder sb = new StringBuilder();
         sb.append(CharUtil.toString(prefix));
@@ -53,6 +69,12 @@ public class AttackString {
                 CharUtil.toPrintableString(prefix),
                 CharUtil.toPrintableString(attack), n,
                 CharUtil.toPrintableString(postfix));
+    }
+
+    public String genReadableStrWithoutPostfix(){
+        return String.format("\"%s\" + \"%s\" * %d",
+                CharUtil.toPrintableString(prefix),
+                CharUtil.toPrintableString(attack), n);
     }
 
     @Override

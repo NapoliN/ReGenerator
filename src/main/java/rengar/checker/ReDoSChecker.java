@@ -12,24 +12,15 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 public class ReDoSChecker {
-    private final String patternStr;
     private final RegexExpr regexExpr;
     private final Set<ReDoSPattern> patterns = new HashSet<>();
 
-    public ReDoSChecker(String patternStr, RegexParser.Language lanType) throws PatternSyntaxException {
-        RegexParser parser = RegexParser.createParser(lanType, patternStr);
-        regexExpr = parser.parse();
-        PreprocessPipeline.handle(regexExpr);
-        this.patternStr = patternStr;
-    }
-
     public ReDoSChecker(RegexExpr regexExpr) {
         this.regexExpr = regexExpr;
-        this.patternStr = regexExpr.genString();
     }
 
     public String getPatternStr() {
-        return patternStr;
+        return regexExpr.genString();
     }
 
     public RegexExpr getRegexExpr() {
@@ -73,7 +64,7 @@ public class ReDoSChecker {
     }
 
     public void print() {
-        System.out.printf("check string: %s\n", patternStr);
+        System.out.printf("check string: %s\n", getPatternStr());
         for (ReDoSPattern pattern : patterns) {
             System.out.println(pattern);
         }

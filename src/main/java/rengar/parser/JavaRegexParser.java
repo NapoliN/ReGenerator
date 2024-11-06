@@ -95,6 +95,7 @@ class JavaRegexParser extends RegexParser {
                         break LOOP; // break while(true)
                 default:
                     tmpExpr = parseSingleCharOrCharRange(false);
+                    //System.out.println("parseSingleCharOrCharRange " + tmpExpr.getExprId() + " " + tmpExpr.genString());
                     break;
             } // switch (c)
             // parseGroup may be return null
@@ -169,6 +170,8 @@ class JavaRegexParser extends RegexParser {
             }
         }
         loopExpr = new LoopExpr(min, max, type, body);
+        //System.out.println(body.getExprId());
+        //System.out.println(body.genString());
         // exchange the id of loopExpr and body
         loopExpr.setExprId(body.getExprId());
         body.setExprId(id);
@@ -248,6 +251,8 @@ class JavaRegexParser extends RegexParser {
             } else {
                 // normal escape character
                 resultExpr = parseEscape(inClass);
+                //System.out.println("parseEscape " + id);
+                //System.out.println(resultExpr.genString());
                 if (!(resultExpr instanceof SingleCharExpr))
                     isNotRange = true;
             }
@@ -255,8 +260,10 @@ class JavaRegexParser extends RegexParser {
             read(); // move to next char
             resultExpr = new SingleCharExpr(c);
         }
-        if (isNotRange)
+        if (isNotRange){
+            resultExpr.setExprId(id);
             return resultExpr;
+        }
         // <case 2>. process character class
         if (peek() == '-' && inClass) {
             Expr tmpExpr;
@@ -520,6 +527,7 @@ class JavaRegexParser extends RegexParser {
 
     Expr parseGroup() throws PatternSyntaxException {
         Expr resultExpr = null;
+        RegexExpr body = null;
         int id = popExprId();
         int c = peek();
         if (c == '?') {
@@ -529,7 +537,7 @@ class JavaRegexParser extends RegexParser {
                 // (?:X) === X, as a non-capturing group
                 case ':' -> {
                     read(); // eat :
-                    RegexExpr body = parseExpr();
+                    body = parseExpr();
                     resultExpr = new AnonymousGroupExpr(body);
                 }
                 case '<' -> {
@@ -556,14 +564,14 @@ class JavaRegexParser extends RegexParser {
                         String groupname = sb.toString();
                         int tmpGroupCount = groupCount;
                         groupCount += 1;
-                        RegexExpr body = parseExpr();
+                        body = parseExpr();
                         resultExpr = new NamedGroupExpr(body, tmpGroupCount, groupname);
                     } else {
                         // (?<=X)	X, via zero-width positive lookbehind
                         // (?<!X)	X, via zero-width negative lookbehind
                         int tmp = c;
                         read();
-                        RegexExpr body = parseExpr();
+                        body = parseExpr();
                         if (tmp == '=')
                             resultExpr = new LookbehindExpr(body, false);
                         else if (tmp == '!')
@@ -575,19 +583,19 @@ class JavaRegexParser extends RegexParser {
                 case '=' -> {
                     // (?=X)	X, via zero-width positive lookahead
                     read(); // eat =
-                    RegexExpr body = parseExpr();
+                    body = parseExpr();
                     resultExpr = new LookaheadExpr(body, false);
                 }
                 case '!' -> {
                     // (?!X)	X, via zero-width negative lookahead
                     read(); // eat !
-                    RegexExpr body = parseExpr();
+                    body = parseExpr();
                     resultExpr = new LookaheadExpr(body, true);
                 }
                 case '>' -> {
                     // (?>X)	X, as an independent, non-capturing group
                     read(); // eat >
-                    RegexExpr body = parseExpr();
+                    body = parseExpr();
                     resultExpr = new IndependentGroupExpr(body);
                 }
                 case '$', '@' -> throw error("Unknown group type");
@@ -600,14 +608,14 @@ class JavaRegexParser extends RegexParser {
                     if (c != ':')
                         throw error("unknown inline modifier");
                     read(); // eat :
-                    RegexExpr body = parseExpr();
+                    body = parseExpr();
                     resultExpr = new AnonymousGroupExpr(body);
                 }
             }
         } else {
             int tmpGroupCount = groupCount;
             groupCount += 1;
-            RegexExpr body = parseExpr();
+            body = parseExpr();
             resultExpr = new RegularGroupExpr(body, tmpGroupCount);
         }
         expect(')', "Unclosed group");
@@ -615,6 +623,7 @@ class JavaRegexParser extends RegexParser {
         if(resultExpr != null){
             resultExpr.setExprId(id);
         }
+        body.setParent(resultExpr);
         return resultExpr;
     }
 

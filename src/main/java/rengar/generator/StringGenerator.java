@@ -7,26 +7,8 @@ import rengar.parser.RegexParser;
 import rengar.parser.exception.PatternSyntaxException;
 
 public class StringGenerator {
-    public static int[] gen(String patternStr)
-            throws PatternSyntaxException {
-        return gen(patternStr, RegexParser.Language.Java, 1).get(0);
-    }
-    public static int[] gen(String patternStr, RegexParser.Language type)
-            throws PatternSyntaxException {
-        return gen(patternStr, type, 1).get(0);
-    }
-    public static List<int[]> gen(String patternStr, RegexParser.Language type, int loopMax)
-            throws PatternSyntaxException {
-        RegexParser parser = RegexParser.createParser(type, patternStr);
-        RegexExpr regexExpr = parser.parse();
-        Set<Path> paths = gen(regexExpr, loopMax, -1, false);
-        List<int[]> strings = new ArrayList<>();
-        paths.forEach(path -> strings.add(path.genValue()));
-        return strings;
-    }
-    public static Set<Path> gen(Expr expr) {
-        return gen(expr, 1, -1, false);
-    }
+    
+
 
     /**
      * this function is used to generate Path for regex
@@ -49,6 +31,7 @@ public class StringGenerator {
                     default -> {}
                 }
                 paths.add(path);
+                return paths;
             }
             case GroupExpr groupExpr -> paths = gen(groupExpr.getBody(), loopMax, specificLen, range);
             case SequenceExpr seqExpr -> {
@@ -172,6 +155,8 @@ public class StringGenerator {
 
     /**
      * full permutation
+     * choicesは、各ループに対して試すことのできる選択の集合
+     * 例えば、(a|ab)*ならば、choicesはa,abの2択になる
      * @param choices elements that are used to do permutation
      * @param loopMax the number of selected elements
      * @param maxLength the result's length can't be greater than maxLength
@@ -182,7 +167,7 @@ public class StringGenerator {
         Path prefix = new Path();
         try {
             permutationHelper(choices, out, prefix, 0, loopMax, maxLength);
-        } catch (Exception ignore){}
+        } catch (Exception ignore){} // エラーを握りつぶすな
         return out;
     }
 
@@ -208,6 +193,11 @@ public class StringGenerator {
         }
     }
 
+    /**
+     * Regexを受理するPathを1つ生成する
+     * @param expr
+     * @return
+     */
     public static Path quickGen(Expr expr) {
         Path path = new Path();
         switch (expr) {

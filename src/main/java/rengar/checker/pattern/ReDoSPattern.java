@@ -88,46 +88,6 @@ public abstract class ReDoSPattern {
 
     protected abstract boolean hasAttackableExpr(Expr sequenceExpr);
 
-    public List<AttackString> generate() {
-        List<AttackString> attackStrings = new ArrayList<>();
-        for (Path pathY : getPhi2Paths()) {
-            AttackString attackString = new AttackString();
-            attackString.setPrefix(StringGenerator.quickGen(prefixExpr).genValue());
-
-            int n = getMaxLength();
-            n = n / pathY.getLength();
-            attackString.setAttack(pathY.genValue(), n);
-
-            CharRangeSet lastSetOfY = RegexAnalyzer.getLastSet(attackableExpr);
-            CharRangeSet alphabetOfZ = RegexAnalyzer.getFirstSet(postfixExpr);
-
-            CharRangeSet tmp = lastSetOfY.union(alphabetOfZ);
-            if (this instanceof POAPattern) {
-                tmp = tmp.union(RegexAnalyzer.getFirstSet(attackableExpr));
-            }
-            tmp = tmp.negate();
-            int[] postfix = new int[]{
-                    'A', '\t', '\n', '\u0000',
-                    '\u1111', '\u2222', '\u8888', '\u9999',
-                    '\u3333', '\u4444', '\u5555', '\u6666',
-            };
-            if (!tmp.isEmpty()) {
-                Arrays.fill(postfix, tmp.getRanges().get(0).end);
-                postfix[1] = '\n';
-                postfix[3] = '\t';
-                postfix[5] = '\u1111';
-                postfix[7] = '\u2222';
-                postfix[9] = '\u5555';
-                postfix[11] = '\u9999';
-            }
-            attackString.setPostfix(postfix);
-            attackStrings.add(attackString);
-            if (attackStrings.size() > 40)
-                break;
-        }
-        return attackStrings;
-    }
-
     protected abstract List<Path> getPhi2Paths();
 
     protected int getYLength(Expr expr) {

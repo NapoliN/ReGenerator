@@ -423,8 +423,9 @@ public class DisturbFreePattern {
         }
     }
 
-    // 攻撃文字列の候補を生成する
-    // 個数は120未満
+    /** 攻撃文字列の候補をリストで生成する
+     *  attackPathとおよそ1対1対応でAttackStringが生成される
+    */
     public List<AttackString> generate() {
         Set<AttackString> attackStrings = new HashSet<>();
         List<AttackPath> attackPaths = tryFreeDisturb();
