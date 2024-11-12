@@ -15,6 +15,7 @@ class JavaRegexParser extends RegexParser {
     public RegexExpr parse() throws PatternSyntaxException {
         pos = 0;
         RegexExpr expr = parseExpr();
+        expr.setExprId(0);
         if (patternLength != pos)
             throw error("unexpected internal error");
         return expr;
@@ -623,7 +624,7 @@ class JavaRegexParser extends RegexParser {
         if(resultExpr != null){
             resultExpr.setExprId(id);
         }
-        body.setParent(resultExpr);
+        body.getExpr().setParent(resultExpr);
         return resultExpr;
     }
 

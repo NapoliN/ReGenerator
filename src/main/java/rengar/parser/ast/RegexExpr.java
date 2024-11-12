@@ -12,7 +12,7 @@ public class RegexExpr extends Expr {
 
     public RegexExpr(BranchExpr expr) {
         this.expr = expr;
-        this.setExprId(0);
+        //this.setExprId(0);
     }
 
     public BranchExpr getExpr() {
