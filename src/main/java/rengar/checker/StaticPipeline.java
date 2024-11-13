@@ -135,6 +135,7 @@ public class StaticPipeline {
 
         List<DisturbFreePattern> patternList = checker.getFreePatterns();
         var count = 0;
+        var flagEOLS = false;
         for (DisturbFreePattern pattern : patternList) {
             if (Thread.currentThread().isInterrupted())
                 return null;
@@ -143,10 +144,20 @@ public class StaticPipeline {
                 if (attackStr != null) {
                     result.state = Result.State.Vulnerable;
                     result.add(pattern, attackStr);
-                    if (pattern.getPattern() instanceof POAPattern){
-                        count += 1;
-                        POAPattern poa = (POAPattern) pattern.getPattern();
-                        result.addVuln(new Vulnerability(poa, attackStr, count));
+                    ReDoSPattern redosPattern = pattern.getPattern();
+                    switch (redosPattern) {
+                        case POAPattern poa:
+                            count += 1;
+                            result.addVuln(new Vulnerability(poa, attackStr, count));
+                            break;
+                        case EOAPattern eoa:
+                            flagEOLS = true;
+                            break;
+                        case EODPattern eod:
+                            flagEOLS = true;
+                            break;
+                        default:
+                            break;
                     }
                     if (!findAll)
                         break;
@@ -155,45 +166,51 @@ public class StaticPipeline {
         }
 
         System.out.println("conventional analysis finished");
-        result.printVulnerabilitiesAST();
 
-        // グラフを構築
-        DAG dag = new DAG();
-        for (int i=0; i < result.vulnerabilities.size(); i++){
-            Vulnerability vuln1 = result.vulnerabilities.get(i);
-            dag.addNode(i);
-            for (int j=i+1; j < result.vulnerabilities.size(); j++){
-                Vulnerability vuln2 = result.vulnerabilities.get(j);
-                var compare = Vulnerability.compare(vuln1, vuln2);
-                if (compare == Vulnerability.Comparator.PRECEED){
-                    dag.addEdge(i, j);
-                }
-                else if (compare == Vulnerability.Comparator.FOLLOW){
-                    dag.addEdge(j, i);
+        // step 3. if there is no exponential vulnerability and are more than one vulnerabilities, require addtional analysis
+        if (!flagEOLS && count > 1){
+            result.printVulnerabilitiesAST();
+
+            // グラフを構築
+            DAG dag = new DAG();
+            for (int i=0; i < result.vulnerabilities.size(); i++){
+                Vulnerability vuln1 = result.vulnerabilities.get(i);
+                dag.addNode(i);
+                for (int j=i+1; j < result.vulnerabilities.size(); j++){
+                    Vulnerability vuln2 = result.vulnerabilities.get(j);
+                    var compare = Vulnerability.compare(vuln1, vuln2);
+                    if (compare == Vulnerability.Comparator.PRECEED){
+                        dag.addEdge(i, j);
+                    }
+                    else if (compare == Vulnerability.Comparator.FOLLOW){
+                        dag.addEdge(j, i);
+                    }
                 }
             }
+    
+            System.out.println("DAG constructed");
+    
+            // 最長増加列を求める
+            DAGDFS dfs = new DAGDFS(dag);
+            List<Integer> longestPath = dfs.findLongestIncreasingSequence();
+            // longestPathを出力する
+            System.out.println("Longest Path:");
+            for (int i=0; i < longestPath.size(); i++){
+                System.out.printf("%d ",longestPath.get(i));
+            }
+            System.out.println();
+    
+            List<Vulnerability> longestVuln = new ArrayList<>();
+            for (int i=0; i < longestPath.size(); i++){
+                longestVuln.add(result.vulnerabilities.get(longestPath.get(i)));
+            }
+            
+            MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
+            MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
+            System.out.println(multiVulnAttackString.genReadableString());
+            System.out.println("entire length: "+multiVulnAttackString.genStr().length());
+            System.out.println("estimated step: "+multiVulnAttackString.estimatedMatchingStep().toString());
         }
-
-        System.out.println("DAG constructed");
-
-        // 最長増加列を求める
-        DAGDFS dfs = new DAGDFS(dag);
-        List<Integer> longestPath = dfs.findLongestIncreasingSequence();
-        // longestPathを出力する
-        System.out.println("Longest Path:");
-        for (int i=0; i < longestPath.size(); i++){
-            System.out.printf("%d ",longestPath.get(i));
-        }
-        System.out.println();
-
-        List<Vulnerability> longestVuln = new ArrayList<>();
-        for (int i=0; i < longestPath.size(); i++){
-            longestVuln.add(result.vulnerabilities.get(longestPath.get(i)));
-        }
-        
-        MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
-        MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
-        System.out.println(multiVulnAttackString.genReadableString());
         
         long endTime = System.currentTimeMillis();
         result.runningTime = endTime - startTime;

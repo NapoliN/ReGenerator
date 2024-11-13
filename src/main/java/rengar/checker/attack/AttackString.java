@@ -35,6 +35,10 @@ public class AttackString {
     public void setN(int n) {
         this.n = n;
     }
+    
+    public int getN() {
+        return n;
+    }
 
     public void setPostfix(int[] postfix) {
         this.postfix = postfix;
@@ -46,10 +50,6 @@ public class AttackString {
 
     public int[] getAttack() {
         return attack;
-    }
-
-    public int getN() {
-        return n;
     }
 
     public int[] getPostfix() {
