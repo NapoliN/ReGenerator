@@ -94,7 +94,7 @@ public class StaticPipeline {
         Result result = new Result();
         result.state = Result.State.Normal;
 
-        // preprocess: 正規表現を解析できる形に正規化（文字列的として置き換える）
+        // preprocess: standardize the pattern string
         if (!GlobalConfig.option.isDisablePreprocess()) {
             patternStr = ReDosHunterPreProcess.process(patternStr);
             if (patternStr == null) {
@@ -106,7 +106,7 @@ public class StaticPipeline {
                 System.out.printf("ReDosHunter rengar.preprocess result %s\n", patternStr);
         }
 
-        // step 1. parse regex string
+        // step 1. parse the pattern string
         RegexExpr targetExpr;
         try {
             RegexParser parser = RegexParser.createParser(language, patternStr);
@@ -133,6 +133,7 @@ public class StaticPipeline {
             return result;
         }
 
+        // step 3. generate attack strings and validate them
         List<DisturbFreePattern> patternList = checker.getFreePatterns();
         var count = 0;
         var flagEOLS = false;
@@ -165,9 +166,8 @@ public class StaticPipeline {
             } catch (PatternSyntaxException ignored) {}
         }
 
-        System.out.println("conventional analysis finished");
-
-        // step 3. if there is no exponential vulnerability and are more than one vulnerabilities, require addtional analysis
+        // if there is no exponential vulnerability and are more than one polynomial vulnerabilities, require addtional analysis
+        // step 4. generate multi-vulnerability attack string
         if (!flagEOLS && count > 1){
             result.printVulnerabilitiesAST();
 
@@ -187,9 +187,7 @@ public class StaticPipeline {
                     }
                 }
             }
-    
-            System.out.println("DAG constructed");
-    
+        
             // 最長増加列を求める
             DAGDFS dfs = new DAGDFS(dag);
             List<Integer> longestPath = dfs.findLongestIncreasingSequence();
