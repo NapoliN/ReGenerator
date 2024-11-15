@@ -2,6 +2,7 @@ package rengar.dynamic.jdk8.regex;
 
 import java.util.Objects;
 
+import rengar.config.GlobalConfig;
 import rengar.dynamic.exception.EarlyExitException;
 import rengar.dynamic.profile.*;
 
@@ -132,8 +133,8 @@ public final class Matcher implements MatchResult {
     /**
      * All matchers have the state used by Pattern during a match.
      */
-    Matcher(Pattern parent, CharSequence text) {
-        this.profile = new Profile(parent.getNodeNumber());
+    Matcher(Pattern parent, CharSequence text, int stepUpperBound) {
+        this.profile = new Profile(parent.getNodeNumber(), stepUpperBound);
         this.parentPattern = parent;
         this.text = text;
 
@@ -145,6 +146,11 @@ public final class Matcher implements MatchResult {
         // Put fields into initial states
         reset();
     }
+
+    Matcher(Pattern parent, CharSequence text){
+        this(parent, text, GlobalConfig.MatchingStepUpperBound);
+    }
+
 
     /**
      * Returns the pattern that is interpreted by this matcher.
@@ -1104,6 +1110,8 @@ public final class Matcher implements MatchResult {
         return result;
     }
 
+
+    
     /**
      * Initiates a search for an anchored match to a Pattern within the given
      * bounds. The groups are filled with default values and the match of the

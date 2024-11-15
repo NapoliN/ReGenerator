@@ -15,8 +15,10 @@ public class Validator {
         pattern = Pattern.compile(patternStr);
     }
 
-    public boolean isVulnerable() {
-        Matcher matcher = pattern.matcher(attackStr.genStr());
+
+
+    public boolean validate(int upperBound) {
+        Matcher matcher = pattern.matcher(attackStr.genStr(), upperBound);
         matcher.setEarlyExit();
         try {
             if (type.contains("SLQ")) { //実装ミスで、本来はPOLSとしなければならない

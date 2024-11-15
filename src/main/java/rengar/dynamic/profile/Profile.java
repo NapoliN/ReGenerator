@@ -18,9 +18,12 @@ public class Profile {
     private final List<Suggestion> suggestions = new ArrayList<>();
     private final Set<Integer> posSet = new HashSet<>();
 
-    public Profile(int nodeNumber) {
+    private final int matchingStepUpperBound;
+
+    public Profile(int nodeNumber, int matchingStepUpperBound) {
         this.nodeNumber = nodeNumber;
         this.nodeToMatchNumber = new long[this.nodeNumber];
+        this.matchingStepUpperBound = matchingStepUpperBound;
     }
 
     public void setEarlyExit() {
@@ -45,7 +48,7 @@ public class Profile {
     public void mark(int id) throws EarlyExitException {
         total += 1;
         nodeToMatchNumber[id] += 1;
-        if (earlyExit && getMatchingStep() > GlobalConfig.MatchingStepUpperBound) {
+        if (earlyExit && getMatchingStep() > this.matchingStepUpperBound) {
             throw new EarlyExitException();
         }
     }

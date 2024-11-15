@@ -51,19 +51,19 @@ public class StaticPipeline {
             }
         }
 
-        public void addVuln(Vulnerability vuln){
+        public void addVuln(Vulnerability vuln) {
             vulnerabilities.add(vuln);
         }
 
-        public void printVulnerabilitiesAST(){
+        public void printVulnerabilitiesAST() {
             System.out.println("hoge");
             StringBuilder sb = new StringBuilder();
             // [を出力
             sb.append("[");
-            for (int i=0; i < vulnerabilities.size(); i++){
+            for (int i = 0; i < vulnerabilities.size(); i++) {
                 Vulnerability vuln = vulnerabilities.get(i);
                 sb.append(vuln.toJSONString());
-                if (i != vulnerabilities.size()-1){
+                if (i != vulnerabilities.size() - 1) {
                     sb.append(",");
                 }
             }
@@ -75,8 +75,7 @@ public class StaticPipeline {
 
     public static Result runWithTimeOut(String patternStr, RegexParser.Language language, boolean findAll) {
         Future<Result> future = GlobalConfig.executor.submit(
-                () -> StaticPipeline.run(patternStr, language, findAll)
-        );
+                () -> StaticPipeline.run(patternStr, language, findAll));
         try {
             return future.get(GlobalConfig.option.getTotalTimeout(), TimeUnit.SECONDS);
         } catch (InterruptedException | ExecutionException | TimeoutException ignored) {
@@ -112,8 +111,7 @@ public class StaticPipeline {
             RegexParser parser = RegexParser.createParser(language, patternStr);
             targetExpr = parser.parse();
             System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
-        }
-        catch (PatternSyntaxException e){
+        } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
             result.state = Result.State.SyntaxError;
@@ -137,10 +135,13 @@ public class StaticPipeline {
         List<DisturbFreePattern> patternList = checker.getFreePatterns();
         var count = 0;
         var flagEOLS = false;
+        // validate each part of vulnerability pattern
         for (DisturbFreePattern pattern : patternList) {
             if (Thread.currentThread().isInterrupted())
                 return null;
             try {
+                // EOLSなら本検証
+                // PTLS, POLSなら部分脆弱性としての検証
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern, result);
                 if (attackStr != null) {
                     result.state = Result.State.Vulnerable;
@@ -163,59 +164,64 @@ public class StaticPipeline {
                     if (!findAll)
                         break;
                 }
-            } catch (PatternSyntaxException ignored) {}
+            } catch (PatternSyntaxException ignored) {
+            }
         }
 
-        // if there is no exponential vulnerability and are more than one polynomial vulnerabilities, require addtional analysis
+        // if there is no exponential vulnerability and are more than one polynomial
+        // vulnerabilities, require addtional analysis
         // step 4. generate multi-vulnerability attack string
-        if (!flagEOLS && count > 1){
+        if (!flagEOLS && count > 1) {
             result.printVulnerabilitiesAST();
 
-            // グラフを構築
+            // construct DAG for vulnerabilities
             DAG dag = new DAG();
-            for (int i=0; i < result.vulnerabilities.size(); i++){
+            for (int i = 0; i < result.vulnerabilities.size(); i++) {
                 Vulnerability vuln1 = result.vulnerabilities.get(i);
                 dag.addNode(i);
-                for (int j=i+1; j < result.vulnerabilities.size(); j++){
+                for (int j = i + 1; j < result.vulnerabilities.size(); j++) {
                     Vulnerability vuln2 = result.vulnerabilities.get(j);
                     var compare = Vulnerability.compare(vuln1, vuln2);
-                    if (compare == Vulnerability.Comparator.PRECEED){
+                    if (compare == Vulnerability.Comparator.PRECEED) {
                         dag.addEdge(i, j);
-                    }
-                    else if (compare == Vulnerability.Comparator.FOLLOW){
+                    } else if (compare == Vulnerability.Comparator.FOLLOW) {
                         dag.addEdge(j, i);
                     }
                 }
             }
-        
-            // 最長増加列を求める
+
+            // search longest increasing sequence
             DAGDFS dfs = new DAGDFS(dag);
             List<Integer> longestPath = dfs.findLongestIncreasingSequence();
             // longestPathを出力する
-            System.out.println("Longest Path:");
-            for (int i=0; i < longestPath.size(); i++){
-                System.out.printf("%d ",longestPath.get(i));
+            System.out.print("Longest Path:");
+            for (int i = 0; i < longestPath.size(); i++) {
+                System.out.printf("%d ", longestPath.get(i));
             }
             System.out.println();
-    
+
             List<Vulnerability> longestVuln = new ArrayList<>();
-            for (int i=0; i < longestPath.size(); i++){
+            for (int i = 0; i < longestPath.size(); i++) {
                 longestVuln.add(result.vulnerabilities.get(longestPath.get(i)));
             }
-            
+
+            // generate multi-vulnerability attack string
             MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
             MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
             System.out.println(multiVulnAttackString.genReadableString());
-            System.out.println("entire length: "+multiVulnAttackString.genStr().length());
-            System.out.println("estimated step: "+multiVulnAttackString.estimatedMatchingStep().toString());
+            System.out.println("entire length: " + multiVulnAttackString.genStr().length());
+            System.out.println("estimated step: " + multiVulnAttackString.estimatedMatchingStep().toString());
+
+            // validate multi-vulnerability attack string
+            
         }
-        
+
         long endTime = System.currentTimeMillis();
         result.runningTime = endTime - startTime;
         if (!GlobalConfig.option.isQuiet())
             System.out.printf(
                     "%s. It takes %f seconds\n",
-                    getCurrentDate(), (double)result.runningTime / 1000);
+                    getCurrentDate(), (double) result.runningTime / 1000);
         DisturbType type = new DisturbType();
         for (Pair<DisturbFreePattern, AttackString> pair : result.attacks) {
             AttackString as = pair.getRight();
@@ -233,23 +239,13 @@ public class StaticPipeline {
         return result;
     }
 
-    private static <T> List<T> tryPopN(int n, List<T> lists) {
-        List<T> results = new LinkedList<>();
-        while (results.size() != n && !lists.isEmpty()) {
-            T elem = lists.get(0);
-            lists.remove(0);
-            results.add(elem);
-        }
-        return results;
-    }
-
-    public static AttackString handleReDoSPattern(String patternStr,
-                                                   DisturbFreePattern pattern,
-                                              Result result)
+    private static AttackString handleReDoSPattern(String patternStr, DisturbFreePattern pattern, Result result)
             throws PatternSyntaxException {
         if (!GlobalConfig.option.isQuiet())
             System.out.println(pattern);
         List<AttackString> attackStrList;
+        // if pattern is exponential pattern, use user designated upperbound, otherwise use partial analysis upperbound
+        int upperBound = pattern.getPattern() instanceof EOAPattern || pattern.getPattern() instanceof EODPattern ? GlobalConfig.MatchingStepUpperBound : GlobalConfig.MatchingStepUpperBoundForPartialAnalysis;
         try {
             attackStrList = pattern.generate();
         } catch (Exception | Error ignored) {
@@ -265,12 +261,11 @@ public class StaticPipeline {
                 System.out.printf("try %s ", attackStr.genReadableStr());
             try {
                 Validator validator = new Validator(patternStr, attackStr, pattern.getType());
-                if (validator.isVulnerable()) {
+                if (validator.validate(upperBound)) {
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("SUCCESS");
                     return attackStr;
-                }
-                else {
+                } else {
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("FAILED");
                 }
@@ -282,7 +277,7 @@ public class StaticPipeline {
         return null;
     }
 
-    public static String getCurrentDate() {
+    private static String getCurrentDate() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date(System.currentTimeMillis());
         return formatter.format(date);

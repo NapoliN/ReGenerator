@@ -55,16 +55,11 @@ public class RegexExpr extends Expr {
 
         List<Integer> ancestors1 = expr1.getAncestors();
         List<Integer> ancestors2 = expr2.getAncestors();
-        // ancestor1を表示
-        System.out.println("ancestors1" + ancestors1);
-        // ancestor2を表示
-        System.out.println("ancestors2" + ancestors2);
         
         int i = 0;
         while (i < ancestors1.size() && i < ancestors2.size() && ancestors1.get(i) == ancestors2.get(i)) {
             i++;
         }
-        System.out.println("anecstor_i" + i);
         return getExprById(ancestors1.get(i - 1), expr);
     }
 

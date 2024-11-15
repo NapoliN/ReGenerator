@@ -1,5 +1,6 @@
 package rengar.dynamic.jdk8.regex;
 
+import rengar.config.GlobalConfig;
 import rengar.dynamic.exception.EarlyExitException;
 import rengar.dynamic.jdk8.lang.Character;
 
@@ -317,20 +318,24 @@ public final class Pattern
         return pattern;
     }
 
+    public Matcher matcher(CharSequence input){
+        return matcher(input, GlobalConfig.MatchingStepUpperBound);
+    }
+
     /**
      * Creates a matcher that will match the given input against this pattern.
      *
      * @param input The character sequence to be matched
      * @return A new matcher for this pattern
      */
-    public Matcher matcher(CharSequence input) {
+    public Matcher matcher(CharSequence input,int upperBound) {
         if (!compiled) {
             synchronized (this) {
                 if (!compiled)
                     compile();
             }
         }
-        Matcher m = new Matcher(this, input);
+        Matcher m = new Matcher(this, input, upperBound);
         return m;
     }
 
