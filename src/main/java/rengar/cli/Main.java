@@ -2,6 +2,7 @@ package rengar.cli;
 
 import rengar.checker.StaticPipeline;
 import rengar.checker.attack.AttackString;
+import rengar.checker.attack.StringProvider;
 import rengar.checker.pattern.DisturbFreePattern;
 import com.alibaba.fastjson.JSONObject;
 import rengar.config.GlobalConfig;
@@ -174,12 +175,12 @@ public class Main {
                     case Vulnerable -> {
                         jsonObject.put("Status", "Vulnerable");
                         List<JSONObject> patternList = new LinkedList<>();
-                        for (Pair<DisturbFreePattern, AttackString> pair : result.attacks) {
+                        for (Pair<DisturbFreePattern, StringProvider> pair : result.attacks) {
                             DisturbFreePattern pattern = pair.getLeft();
-                            AttackString as = pair.getRight();
+                            StringProvider sp = pair.getRight();
                             JSONObject patternObj = new JSONObject();
                             patternObj.put("Type", pattern.getType());
-                            patternObj.put("AttackString", b64encode(as.genReadableStr()));
+                            patternObj.put("AttackString", b64encode(sp.genReadableStr()));
                             patternList.add(patternObj);
                         }
                         jsonObject.put("Details", patternList);

@@ -4,7 +4,7 @@ import rengar.checker.pattern.DisturbType;
 import rengar.parser.charutil.*;
 import java.util.Arrays;
 
-public class AttackString {
+public class AttackString implements StringProvider{
     private int[] prefix;
     private int[] attack;
     private int n;

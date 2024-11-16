@@ -1,6 +1,7 @@
 package rengar.checker;
 
 import rengar.checker.attack.AttackString;
+import rengar.checker.attack.StringProvider;
 import rengar.checker.pattern.*;
 import rengar.checker.vulnerability.Vulnerability;
 import rengar.config.GlobalConfig;
@@ -28,16 +29,15 @@ public class StaticPipeline {
         public DisturbType disturbType;
         public long runningTime;
         public State state;
-        public List<Pair<DisturbFreePattern, AttackString>> attacks = new LinkedList<>();
+        public List<Pair<DisturbFreePattern, StringProvider>> attacks = new LinkedList<>();
         public List<Vulnerability> vulnerabilities = new ArrayList<>();
 
-        public void add(DisturbFreePattern newPattern, AttackString newAttackString) {
+        public void add(DisturbFreePattern newPattern, StringProvider newAttackString) {
             boolean isOK = true;
-            for (Pair<DisturbFreePattern, AttackString> pair : attacks) {
+            for (Pair<DisturbFreePattern, StringProvider> pair : attacks) {
                 DisturbFreePattern pattern = pair.getLeft();
-                AttackString attackString = pair.getRight();
-                if (attackString.equals(newAttackString)
-                        && attackString.getDisturbType() == newAttackString.getDisturbType()) {
+                StringProvider attackString = pair.getRight();
+                if (attackString.equals(newAttackString)) {
                     isOK = false;
                     break;
                 }
@@ -56,7 +56,6 @@ public class StaticPipeline {
         }
 
         public void printVulnerabilitiesAST() {
-            System.out.println("hoge");
             StringBuilder sb = new StringBuilder();
             // [を出力
             sb.append("[");
@@ -213,7 +212,12 @@ public class StaticPipeline {
             System.out.println("estimated step: " + multiVulnAttackString.estimatedMatchingStep().toString());
 
             // validate multi-vulnerability attack string
-            
+            Validator validator = new Validator(patternStr, "MPV");
+            if (validator.validate(multiVulnAttackString.genStr(), GlobalConfig.MatchingStepUpperBound)) {
+                result.state = Result.State.Vulnerable;
+                System.out.println("Multiple Vulnerability Found");
+            }
+
         }
 
         long endTime = System.currentTimeMillis();
@@ -223,10 +227,12 @@ public class StaticPipeline {
                     "%s. It takes %f seconds\n",
                     getCurrentDate(), (double) result.runningTime / 1000);
         DisturbType type = new DisturbType();
-        for (Pair<DisturbFreePattern, AttackString> pair : result.attacks) {
-            AttackString as = pair.getRight();
+        /**
+        for (Pair<DisturbFreePattern, StringProvider> pair : result.attacks) {
+            StringProvider as = pair.getRight();
             type.setType(as.getDisturbType());
         }
+        */
         if (!checker.hasBranch()) {
             type.getTypes().remove(DisturbType.Type.Case1);
             type.getTypes().remove(DisturbType.Type.Case2);
@@ -260,8 +266,8 @@ public class StaticPipeline {
             if (!GlobalConfig.option.isQuiet())
                 System.out.printf("try %s ", attackStr.genReadableStr());
             try {
-                Validator validator = new Validator(patternStr, attackStr, pattern.getType());
-                if (validator.validate(upperBound)) {
+                Validator validator = new Validator(patternStr, pattern.getType());
+                if (validator.validate(attackStr.genStr(), upperBound)) {
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("SUCCESS");
                     return attackStr;
