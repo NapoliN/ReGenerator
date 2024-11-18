@@ -109,7 +109,8 @@ public class StaticPipeline {
         try {
             RegexParser parser = RegexParser.createParser(language, patternStr);
             targetExpr = parser.parse();
-            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
+            
+            //System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
         } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
@@ -141,7 +142,7 @@ public class StaticPipeline {
             try {
                 // EOLSなら本検証
                 // PTLS, POLSなら部分脆弱性としての検証
-                AttackString attackStr = handleReDoSPattern(patternStr, pattern, result);
+                AttackString attackStr = handleReDoSPattern(patternStr, pattern);
                 if (attackStr != null) {
                     result.state = Result.State.Vulnerable;
                     result.add(pattern, attackStr);
@@ -208,14 +209,14 @@ public class StaticPipeline {
             MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
             MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
             System.out.println(multiVulnAttackString.genReadableString());
-            System.out.println("entire length: " + multiVulnAttackString.genStr().length());
+            System.out.println("entire length: " + multiVulnAttackString.getLength());
             System.out.println("estimated step: " + multiVulnAttackString.estimatedMatchingStep().toString());
 
             // validate multi-vulnerability attack string
             Validator validator = new Validator(patternStr, "MPV");
             if (validator.validate(multiVulnAttackString.genStr(), GlobalConfig.MatchingStepUpperBound)) {
                 result.state = Result.State.Vulnerable;
-                System.out.println("Multiple Vulnerability Found");
+                System.out.println("Multiple Vulnerability Found: " + multiVulnAttackString.genReadableString());
             }
 
         }
@@ -245,10 +246,20 @@ public class StaticPipeline {
         return result;
     }
 
-    private static AttackString handleReDoSPattern(String patternStr, DisturbFreePattern pattern, Result result)
+
+    /**
+     * 
+     * @param patternStr
+     * @param pattern
+     * @return if attack successes return the attack str, otherwise null
+     * @throws PatternSyntaxException
+     */
+    private static AttackString handleReDoSPattern(String patternStr, DisturbFreePattern pattern)
             throws PatternSyntaxException {
+        /*
         if (!GlobalConfig.option.isQuiet())
             System.out.println(pattern);
+        */
         List<AttackString> attackStrList;
         // if pattern is exponential pattern, use user designated upperbound, otherwise use partial analysis upperbound
         int upperBound = pattern.getPattern() instanceof EOAPattern || pattern.getPattern() instanceof EODPattern ? GlobalConfig.MatchingStepUpperBound : GlobalConfig.MatchingStepUpperBoundForPartialAnalysis;
@@ -263,17 +274,23 @@ public class StaticPipeline {
         for (AttackString attackStr : attackStrList) {
             if (Thread.currentThread().isInterrupted())
                 break;
+            /*
             if (!GlobalConfig.option.isQuiet())
                 System.out.printf("try %s ", attackStr.genReadableStr());
+            */
             try {
                 Validator validator = new Validator(patternStr, pattern.getType());
                 if (validator.validate(attackStr.genStr(), upperBound)) {
+                    /*
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("SUCCESS");
+                    */
                     return attackStr;
                 } else {
+                    /*
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("FAILED");
+                    */
                 }
             } catch (rengar.dynamic.jdk8.regex.PatternSyntaxException e) {
                 if (!GlobalConfig.option.isQuiet())

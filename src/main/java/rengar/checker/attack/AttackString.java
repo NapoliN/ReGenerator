@@ -44,7 +44,11 @@ public class AttackString implements StringProvider{
         this.postfix = postfix;
     }
 
+    // nullが返ってくるぞこいつ
     public int[] getPrefix() {
+        if(prefix == null) {
+            this.prefix = new int[0];
+        }
         return prefix;
     }
 
