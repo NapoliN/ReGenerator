@@ -44,6 +44,14 @@ public class Main {
             int number = Integer.parseInt(cli.getOptionValue("threadNumber"));
             GlobalConfig.option.setThreadNumber(number);
         }
+        if (cli.hasOption("stringLength")) {
+            int length = Integer.parseInt(cli.getOptionValue("stringLength"));
+            GlobalConfig.option.setMaxStringLength(length);
+        }
+        if (cli.hasOption("upperBound")) {
+            int upperBound = Integer.parseInt(cli.getOptionValue("upperBound"));
+            GlobalConfig.option.setMatchingStepUpperBound(upperBound);
+        }
         if (cli.hasOption("single")) {
             String b64regex = cli.getOptionValue("single");
             JSONObject jsonObject = Batch.handleSingleRegex(0, b64regex, true);
@@ -82,6 +90,13 @@ public class Main {
                 false,
                 "less output information"
         );
+        Option opt5 = new Option(
+                "sl",
+                "stringLength",
+                true,
+                "max attack string length"
+        );
+        opt5.setRequired(false);
         opt6.setRequired(false);
         Option opt7 = new Option(
                 "s",
@@ -118,15 +133,24 @@ public class Main {
                 "thread number"
         );
         opt11.setRequired(false);
+        Option opt12 = new Option(
+            "ub",
+            "upperBound",
+            true,
+            "matching step upper bound"
+        );
+        opt12.setRequired(false);
         options.addOption(opt2);
         options.addOption(opt3);
         options.addOption(opt4);
+        options.addOption(opt5);
         options.addOption(opt6);
         options.addOption(opt7);
         options.addOption(opt8);
         options.addOption(opt9);
         options.addOption(opt10);
         options.addOption(opt11);
+        options.addOption(opt12);
         try {
             return cliParser.parse(options, args);
         } catch (ParseException e) {
@@ -179,7 +203,7 @@ public class Main {
                             patternList.add(patternObj);
                         }
                             */
-                        jsonObject.put("Details", patternList);
+                        //jsonObject.put("Details", patternList);
                         //jsonObject.put("DisturbType", result.disturbType.getTypes());
                     }
                 }

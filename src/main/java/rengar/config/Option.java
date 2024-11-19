@@ -19,6 +19,8 @@ public class Option {
     private int staticTimeout = 10;
     private int totalTimeout = 15;
     private int threadNumber = 6;
+    private int maxStringLength = 10000;
+    private int matchingStepUpperBound = 100000;
 
     public boolean isDisablePreprocess() {
         return disablePreprocess;
@@ -78,5 +80,21 @@ public class Option {
 
     public void quiet() {
         this.quiet = true;
+    }
+
+    public void setMaxStringLength(int maxStringLength) {
+        this.maxStringLength = maxStringLength;
+    }
+
+    public int getMaxStringLength() {
+        return maxStringLength;
+    }
+
+    public void setMatchingStepUpperBound(int matchingStepUpperBound) {
+        this.matchingStepUpperBound = matchingStepUpperBound;
+    }
+
+    public int getMatchingStepUpperBound() {
+        return matchingStepUpperBound;
     }
 }

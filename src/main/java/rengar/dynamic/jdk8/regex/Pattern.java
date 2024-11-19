@@ -319,7 +319,7 @@ public final class Pattern
     }
 
     public Matcher matcher(CharSequence input){
-        return matcher(input, GlobalConfig.MatchingStepUpperBound);
+        return matcher(input, GlobalConfig.option.getMatchingStepUpperBound());
     }
 
     /**

@@ -148,7 +148,7 @@ public final class Matcher implements MatchResult {
     }
 
     Matcher(Pattern parent, CharSequence text){
-        this(parent, text, GlobalConfig.MatchingStepUpperBound);
+        this(parent, text, GlobalConfig.option.getMatchingStepUpperBound());
     }
 
 

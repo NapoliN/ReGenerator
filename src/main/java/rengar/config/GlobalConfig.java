@@ -4,10 +4,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class GlobalConfig {
-    // you can change these values to adjust the performance and result of the tool
-    public static final int MatchingStepUpperBound = 100000000; 
-    public static final int MaxYStringSum = 1000;
-
     public static final int MaxYStringLengthForNQ = 45;
     public static final int MaxYStringLengthForEOD = 40;
     public static final int MaxYStringLengthForEOA = 120;
