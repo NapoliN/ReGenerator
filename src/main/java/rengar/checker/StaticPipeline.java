@@ -29,6 +29,16 @@ public class StaticPipeline {
         public DisturbType disturbType;
         public long runningTime;
         public State state;
+        public String type;
+        public StringProvider attackString;
+
+        public void setVulnerability(String type, StringProvider attackString) {
+            this.state = State.Vulnerable;
+            this.type = type;
+            this.attackString = attackString;
+        }
+
+        /**
         public List<Pair<DisturbFreePattern, StringProvider>> attacks = new LinkedList<>();
         public List<Vulnerability> vulnerabilities = new ArrayList<>();
 
@@ -50,6 +60,7 @@ public class StaticPipeline {
                 attacks.add(new Pair<>(newPattern, newAttackString));
             }
         }
+        */
 
         public void addVuln(Vulnerability vuln) {
             vulnerabilities.add(vuln);
@@ -152,12 +163,10 @@ public class StaticPipeline {
                             break;
                         case EOAPattern eoa:
                             flagEOLS = true;
-                            result.state = Result.State.Vulnerable;
-                            result.add(pattern, attackStr);
+                            result.setVulnerability("EOLS", attackStr);
                             break;
                         case EODPattern eod:
-                            result.state = Result.State.Vulnerable;
-                            result.add(pattern, attackStr);
+                            result.setVulnerability("EOLS", attackStr);
                             flagEOLS = true;
                             break;
                         default:
@@ -174,7 +183,7 @@ public class StaticPipeline {
         // vulnerabilities, require addtional analysis
         // step 4. generate multi-vulnerability attack string
         if (!flagEOLS && count > 1) {
-            result.printVulnerabilitiesAST();
+            //result.printVulnerabilitiesAST();
 
             // construct DAG for vulnerabilities
             DAG dag = new DAG();
@@ -217,10 +226,9 @@ public class StaticPipeline {
             // validate multi-vulnerability attack string
             Validator validator = new Validator(patternStr, "MPV");
             if (validator.validate(multiVulnAttackString.genStr(), GlobalConfig.MatchingStepUpperBound)) {
-                result.state = Result.State.Vulnerable;
-                System.out.println("Multiple Vulnerability Found: " + multiVulnAttackString.genReadableString());
+                result.setVulnerability("MPV", multiVulnAttackString);
+                System.out.println("SUCCESS: " + multiVulnAttackString.genReadableString());
             }
-
         }
 
         long endTime = System.currentTimeMillis();

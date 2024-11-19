@@ -166,6 +166,9 @@ public class Main {
                     case Normal -> jsonObject.put("Status", "Safe");
                     case Vulnerable -> {
                         jsonObject.put("Status", "Vulnerable");
+                        jsonObject.put("VulnType", result.type);
+                        jsonObject.put("AttackString", b64encode(result.attackString.genReadableStr()));
+                        /**
                         List<JSONObject> patternList = new LinkedList<>();
                         for (Pair<DisturbFreePattern, StringProvider> pair : result.attacks) {
                             DisturbFreePattern pattern = pair.getLeft();
@@ -175,8 +178,9 @@ public class Main {
                             patternObj.put("AttackString", b64encode(sp.genReadableStr()));
                             patternList.add(patternObj);
                         }
+                            */
                         jsonObject.put("Details", patternList);
-                        jsonObject.put("DisturbType", result.disturbType.getTypes());
+                        //jsonObject.put("DisturbType", result.disturbType.getTypes());
                     }
                 }
             }
