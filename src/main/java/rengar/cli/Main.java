@@ -76,13 +76,6 @@ public class Main {
                 "ingore disturbance"
         );
         opt4.setRequired(false);
-        Option opt5 = new Option(
-                "m",
-                "multiple",
-                false,
-                "multiple vulnerability mode"
-        );
-        opt5.setRequired(false);
         Option opt6 = new Option(
                 "q",
                 "quiet",
@@ -128,7 +121,6 @@ public class Main {
         options.addOption(opt2);
         options.addOption(opt3);
         options.addOption(opt4);
-        options.addOption(opt5);
         options.addOption(opt6);
         options.addOption(opt7);
         options.addOption(opt8);
@@ -163,7 +155,7 @@ public class Main {
             StaticPipeline.Result result = StaticPipeline.runWithTimeOut(
                     patternStr,
                     RegexParser.Language.Java,
-                    GlobalConfig.option.isMultipleVulnerabilityMode()
+                    true
             );
             if (result == null) {
                 jsonObject.put("Status", "Timeout");

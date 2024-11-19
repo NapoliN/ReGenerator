@@ -32,10 +32,6 @@ public class Option {
         return ingoreDisturbance;
     }
 
-    public boolean isMultipleVulnerabilityMode() {
-        return multipleVulnerabilityMode;
-    }
-
     public int getStaticTimeout() {
         return staticTimeout;
     }

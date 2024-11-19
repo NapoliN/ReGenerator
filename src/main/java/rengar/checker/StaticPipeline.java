@@ -144,8 +144,6 @@ public class StaticPipeline {
                 // PTLS, POLSなら部分脆弱性としての検証
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern);
                 if (attackStr != null) {
-                    result.state = Result.State.Vulnerable;
-                    result.add(pattern, attackStr);
                     ReDoSPattern redosPattern = pattern.getPattern();
                     switch (redosPattern) {
                         case POAPattern poa:
@@ -154,8 +152,12 @@ public class StaticPipeline {
                             break;
                         case EOAPattern eoa:
                             flagEOLS = true;
+                            result.state = Result.State.Vulnerable;
+                            result.add(pattern, attackStr);
                             break;
                         case EODPattern eod:
+                            result.state = Result.State.Vulnerable;
+                            result.add(pattern, attackStr);
                             flagEOLS = true;
                             break;
                         default:
