@@ -30,7 +30,9 @@ public class AnonymousGroupExpr extends GroupExpr {
 
     @Override
     public AnonymousGroupExpr copy() {
-        AnonymousGroupExpr newAnonymousGroupExpr = new AnonymousGroupExpr(getBody().copy());
+        RegexExpr body = getBody().copy();
+        AnonymousGroupExpr newAnonymousGroupExpr = new AnonymousGroupExpr(body);
+        body.setParent(newAnonymousGroupExpr);
         newAnonymousGroupExpr.setExprId(getExprId());
         return newAnonymousGroupExpr;
     }

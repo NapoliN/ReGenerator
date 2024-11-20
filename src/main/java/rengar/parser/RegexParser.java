@@ -12,7 +12,7 @@ public abstract class RegexParser {
 
     protected int pos = 0; // current position in buffer
 
-    private int nextExprId = 0;
+    protected int nextExprId = 0;
 
     protected int popExprId(){
         return ++nextExprId;

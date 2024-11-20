@@ -46,7 +46,9 @@ public class NamedGroupExpr extends GroupExpr {
 
     @Override
     public NamedGroupExpr copy() {
-        NamedGroupExpr newNamedGroupExpr = new NamedGroupExpr(getBody().copy(), index, new String(name));
+        RegexExpr body = getBody().copy();
+        NamedGroupExpr newNamedGroupExpr = new NamedGroupExpr(body, index, new String(name));
+        body.setParent(newNamedGroupExpr);
         newNamedGroupExpr.setExprId(getExprId());
         return newNamedGroupExpr;
     }

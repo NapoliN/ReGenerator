@@ -6,11 +6,12 @@ public abstract class Expr {
     // used to cache the result of toString()
     protected String string;
 
-    private Expr parent;
+    public Expr parent;
 
     public abstract String genString();
 
     public abstract String genJsonExpression();
+    private List<Integer> ancestors; // used for cache
 
     private int exprId = -1;
 
@@ -52,12 +53,15 @@ public abstract class Expr {
     // 先祖への参照を昇順で設定する
     // ancestors[0] がrootになる
     protected List<Integer> getAncestors(){
+        if (ancestors != null)
+            return ancestors;
         Expr current = this;
         List<Integer> ancestors = new ArrayList<>();
         while (current != null){
             ancestors.add(0,current.getExprId());
             current = current.parent;
         }
+        this.ancestors = ancestors;
         return ancestors;
         // FIXME なんかグループのとこで探索がとまる
         // たぶんgroupに親が設定されてない

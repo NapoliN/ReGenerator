@@ -101,4 +101,61 @@ public class AttackString implements StringProvider{
     public int hashCode() {
         return Arrays.hashCode(prefix) ^ Arrays.hashCode(attack) ^ Arrays.hashCode(postfix) ^ n;
     }
+
+    public void convolutePump(){
+        int[] arr = findMinimalRepeatedSubarray(attack);
+        int prevLen = this.attack.length;
+        // sをint[]にしてattackにsetする
+        setAttack(arr);
+        setN(getN() * (prevLen/arr.length));
+
+    }
+
+    private static int[] findMinimalRepeatedSubarray(int[] arr) {
+        int n = arr.length;
+
+        // 配列を2倍し、最初と最後を取り除く
+        int[] doubled = new int[2 * n - 2];
+        System.arraycopy(arr, 1, doubled, 0, n - 1);
+        System.arraycopy(arr, 0, doubled, n - 1, n - 1);
+
+        // 元の配列が繰り返し構成されている場合を確認
+        if (contains(doubled, arr)) {
+            for (int i = 1; i <= n / 2; i++) {
+                if (n % i == 0) {
+                    int[] candidate = Arrays.copyOfRange(arr, 0, i);
+                    if (isRepeated(candidate, arr)) {
+                        return candidate;
+                    }
+                }
+            }
+        }
+
+        return arr; // 配列自体が最小部分配列
+    }
+
+    // 配列が部分配列として含まれているかを確認
+    private static boolean contains(int[] doubled, int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i <= doubled.length - n; i++) {
+            if (Arrays.equals(Arrays.copyOfRange(doubled, i, i + n), arr)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 候補部分配列が元の配列を正確に構成しているか確認
+    private static boolean isRepeated(int[] candidate, int[] arr) {
+        int n = arr.length;
+        int m = candidate.length;
+        if (n % m != 0) return false;
+
+        for (int i = 0; i < n; i++) {
+            if (arr[i] != candidate[i % m]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

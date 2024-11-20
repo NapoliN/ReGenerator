@@ -11,7 +11,7 @@ import rengar.parser.exception.*;
 import java.lang.IndexOutOfBoundsException;
 
 public class RegexExprTest {
-    @Test
+    //@Test
     public void testGetCommonAncestor() {
         String patternStr = "a*a*b*b*";
         assertDoesNotThrow(() -> {

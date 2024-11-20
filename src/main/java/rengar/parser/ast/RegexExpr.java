@@ -21,7 +21,12 @@ public class RegexExpr extends Expr {
 
     public String genJsonExpression() {
         StringBuilder sb = new StringBuilder();
-        sb.append(expr.genJsonExpression());
+        sb.append("{")
+            .append(String.format("\"id\": %d,", getExprId()))
+            .append("\"type\": \"Regex\", ")
+            .append("\"body\": ")
+            .append(expr.genJsonExpression())
+            .append("}");
         return sb.toString();
     }
 
@@ -34,6 +39,53 @@ public class RegexExpr extends Expr {
         RegexExpr newRegexExpr = new RegexExpr(expr.copy());
         newRegexExpr.setExprId(getExprId());
         return newRegexExpr;
+    }
+
+    /**
+     * 指定したIDの先祖を取得する
+     */
+    public List<Integer> getAncestors(int id){
+        Expr tmp = expr;
+        List<Integer> ret = new ArrayList<>();
+        System.out.println("searching: " + id);
+        while (tmp.getExprId() != id){
+            System.out.println(tmp.getExprId());
+            ret.add(tmp.getExprId());
+            switch(tmp){
+                case RegexExpr regexExpr:
+                    tmp = regexExpr.getExpr();
+                    break;
+                case BranchExpr branchExpr:
+                    for(int i=1; i < branchExpr.getSize(); i++){
+                        Expr e = branchExpr.getBranchs().get(i);
+                        if(id < e.getExprId())
+                            tmp = branchExpr.get(i-1);
+                            break;
+                    }
+                    tmp = branchExpr.get(branchExpr.getSize()-1);
+                    break;
+                case SequenceExpr sequenceExpr:
+                    for(int i=1; i < sequenceExpr.getSize(); i++){
+                        Expr e = sequenceExpr.get(i);
+                        if(id < e.getExprId())
+                            tmp = sequenceExpr.get(i-1);
+                            break;
+                    }
+                    tmp = sequenceExpr.get(sequenceExpr.getSize()-1);
+                    break;
+                case LoopExpr loopExpr:
+                    tmp = loopExpr.getBody();
+                    break;
+                case GroupExpr groupExpr:
+                    tmp = groupExpr.getBody();
+                    break;
+                default:
+                    System.out.println("Error: getAncestors");
+                    break;
+            }
+        }
+        ret.add(id);
+        return ret;
     }
 
     /**
@@ -55,6 +107,8 @@ public class RegexExpr extends Expr {
 
         List<Integer> ancestors1 = expr1.getAncestors();
         List<Integer> ancestors2 = expr2.getAncestors();
+        //System.out.println(ancestors1);
+        //System.out.println(ancestors2);
         
         int i = 0;
         while (i < ancestors1.size() && i < ancestors2.size() && ancestors1.get(i) == ancestors2.get(i)) {
@@ -63,6 +117,7 @@ public class RegexExpr extends Expr {
         return getExprById(ancestors1.get(i - 1), expr);
     }
 
+    // 実は誰も使ってない？
     /**
      * 指定したIDのExprを取得する
      * @param id 取得したいExprのID

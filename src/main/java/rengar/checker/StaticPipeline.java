@@ -122,7 +122,7 @@ public class StaticPipeline {
             RegexParser parser = RegexParser.createParser(language, patternStr);
             targetExpr = parser.parse();
             
-            //System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
+            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
         } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
@@ -156,6 +156,7 @@ public class StaticPipeline {
                 // PTLS, POLSなら部分脆弱性としての検証
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern);
                 if (attackStr != null) {
+                    attackStr.convolutePump();
                     ReDoSPattern redosPattern = pattern.getPattern();
                     switch (redosPattern) {
                         case POAPattern poa:
@@ -184,7 +185,7 @@ public class StaticPipeline {
         // vulnerabilities, require addtional analysis
         // step 4. generate multi-vulnerability attack string
         if (!flagEOLS && count > 1) {
-            //result.printVulnerabilitiesAST();
+            result.printVulnerabilitiesAST();
 
             // construct DAG for vulnerabilities
             DAG dag = new DAG();
@@ -193,7 +194,7 @@ public class StaticPipeline {
                 dag.addNode(i);
                 for (int j = i + 1; j < result.vulnerabilities.size(); j++) {
                     Vulnerability vuln2 = result.vulnerabilities.get(j);
-                    var compare = Vulnerability.compare(vuln1, vuln2);
+                    var compare = Vulnerability.compare(targetExpr, vuln1, vuln2);
                     if (compare == Vulnerability.Comparator.PRECEED) {
                         dag.addEdge(i, j);
                     } else if (compare == Vulnerability.Comparator.FOLLOW) {

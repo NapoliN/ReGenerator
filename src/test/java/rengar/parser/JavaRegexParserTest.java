@@ -71,8 +71,8 @@ public class JavaRegexParserTest {
             Field field = Expr.class.getDeclaredField("parent");
             field.setAccessible(true);
 
-            String patternStr = "num_externe\\s*=(?'num_externe'.*?)\\s*xfi_cd.*ins_numins\\s*=(?'ins_numins'.*?)\\s*apt_nom\\s*=(?'apt_nom'.*?)\\s*apt_type\\s*=(?'apt_type'.*?)\\s*apt_telephone\\s*=(?'apt_telephone'.*?)\\s*tsy_cd\\s*=(?'tsy_cd'.*?)\\s*qsy_cd\\s*=(?'qsy_cd'.*?)\\s*commentaire_externe\\s*=(?'commentaire_externe'.*(?:\\n" + //
-                                ".*)*?)\\s*apt_localisation\\s*=(?'apt_localisation'.*?)\\s*urg_cd";
+            //String patternStr = "num_externe\\s*=(?'num_externe'.*?)\\s*xfi_cd.*ins_numins\\s*=(?'ins_numins'.*?)\\s*apt_nom\\s*=(?'apt_nom'.*?)\\s*apt_type\\s*=(?'apt_type'.*?)\\s*apt_telephone\\s*=(?'apt_telephone'.*?)\\s*tsy_cd\\s*=(?'tsy_cd'.*?)\\s*qsy_cd\\s*=(?'qsy_cd'.*?)\\s*commentaire_externe\\s*=(?'commentaire_externe'.*(?:\\n" + //".*)*?)\\s*apt_localisation\\s*=(?'apt_localisation'.*?)\\s*urg_cd";
+            String patternStr = "((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)(:[0-9]{0,5})?(#[\\w]*)?((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[.\\!\\/\\\\w]*))?)";
             patternStr = ReDosHunterPreProcess.process(patternStr);
             System.out.println(patternStr);
             RegexParser parser = JavaRegexParser.createParser(RegexParser.Language.Java, patternStr);
@@ -84,6 +84,7 @@ public class JavaRegexParserTest {
                 Expr current = exprQueue.pop();
                 Expr parent = (Expr)field.get(current);
                 assertNotNull(parent);
+                assertNotEquals(-1, parent.getExprId());
                 idSet.add(current.getExprId());
                 switch (current) {
                     case RegexExpr regexExpr:

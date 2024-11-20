@@ -4,7 +4,7 @@ import rengar.parser.ast.*;
 import rengar.parser.character.*;
 import rengar.parser.exception.*;
 
-import java.util.Locale;
+import java.util.*;
 
 class JavaRegexParser extends RegexParser {
     public JavaRegexParser(String patternStr) {
@@ -15,6 +15,45 @@ class JavaRegexParser extends RegexParser {
     public RegexExpr parse() throws PatternSyntaxException {
         pos = 0;
         RegexExpr expr = parseExpr();
+        // TODO トップダウンDFSでIDを振る
+        this.nextExprId = 0;
+        Deque<Expr> exprQueue = new ArrayDeque<>();
+        exprQueue.add(expr);
+        while(!exprQueue.isEmpty()){
+            Expr current = exprQueue.pop();
+            current.setExprId(popExprId()); 
+            switch(current){
+                case RegexExpr regexExpr:
+                    regexExpr.getExpr().setParent(regexExpr);
+                    exprQueue.push(regexExpr.getExpr());
+                    break;
+                    case BranchExpr branchExpr:
+                    for (int i=branchExpr.getSize()-1;i>=0;i--){
+                        SequenceExpr child = branchExpr.getBranchs().get(i);
+                        child.setParent(current);
+                        exprQueue.push(child);
+                    }
+                    break;
+                case GroupExpr groupExpr:
+                    // FIXME getBody().getExpr()で取り出すの無駄すぎ～～～～～
+                    groupExpr.getBody().setParent(current);
+                    exprQueue.push(groupExpr.getBody());
+                    break;
+                case SequenceExpr seqExpr:
+                    for (int i=seqExpr.getSize()-1;i>=0;i--){
+                        seqExpr.get(i).setParent(current);
+                        exprQueue.push(seqExpr.get(i));
+                    }
+                    break;
+                case LoopExpr loopExpr:
+                    loopExpr.getBody().setParent(current);
+                    exprQueue.push(loopExpr.getBody());
+                    break;
+                default:
+                    continue;
+            }
+        }
+
         expr.setExprId(0);
         if (patternLength != pos)
             throw error("unexpected internal error");
@@ -530,6 +569,7 @@ class JavaRegexParser extends RegexParser {
         Expr resultExpr = null;
         RegexExpr body = null;
         int id = popExprId();
+        int id_body = popExprId();
         int c = peek();
         if (c == '?') {
             read(); // eat ?
@@ -624,6 +664,7 @@ class JavaRegexParser extends RegexParser {
         if(resultExpr != null){
             resultExpr.setExprId(id);
         }
+        body.setExprId(id_body);
         body.getExpr().setParent(resultExpr);
         return resultExpr;
     }
