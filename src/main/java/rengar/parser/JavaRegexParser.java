@@ -54,7 +54,6 @@ class JavaRegexParser extends RegexParser {
             }
         }
 
-        expr.setExprId(0);
         if (patternLength != pos)
             throw error("unexpected internal error");
         return expr;
@@ -68,12 +67,10 @@ class JavaRegexParser extends RegexParser {
     // Alternative -> Sequence (Sequence '|')*
     BranchExpr parseAlternative() throws PatternSyntaxException {
         BranchExpr branchExpr = new BranchExpr();
-        branchExpr.setExprId(popExprId());
         while (true) {
             SequenceExpr joinExpr = parseSequence();
             //System.out.println("JOIN EXPR: " + joinExpr.getExprId());
             branchExpr.add(joinExpr);
-            joinExpr.setParent(branchExpr);
             if (peek() != '|')
                 break;
             read(); // eat |
@@ -84,7 +81,6 @@ class JavaRegexParser extends RegexParser {
     // Sequence -> factor*
     SequenceExpr parseSequence() throws PatternSyntaxException {
         SequenceExpr seqExpr = new SequenceExpr();
-        seqExpr.setExprId(popExprId());
         LOOP:
         while (true) {
             Expr tmpExpr;
@@ -93,12 +89,10 @@ class JavaRegexParser extends RegexParser {
                 case '^':
                     read();
                     tmpExpr = new BeginExpr();
-                    tmpExpr.setExprId(popExprId());
                     break;
                 case '$':
                     read();
                     tmpExpr = new EndExpr();
-                    tmpExpr.setExprId(popExprId());
                     break;
                 case '.':
                     read();
@@ -107,7 +101,6 @@ class JavaRegexParser extends RegexParser {
                     charRangeExpr.negate();
                     charRangeExpr.setStr(".");
                     tmpExpr = charRangeExpr;
-                    tmpExpr.setExprId(popExprId());
                     break;
                 case '[':
                     read(); // eat [
@@ -143,7 +136,6 @@ class JavaRegexParser extends RegexParser {
                 continue;
             tmpExpr = parseLoop(tmpExpr);
             seqExpr.add(tmpExpr);
-            tmpExpr.setParent(seqExpr);
         } // while (true)
         return seqExpr;
     }
@@ -210,12 +202,6 @@ class JavaRegexParser extends RegexParser {
             }
         }
         loopExpr = new LoopExpr(min, max, type, body);
-        //System.out.println(body.getExprId());
-        //System.out.println(body.genString());
-        // exchange the id of loopExpr and body
-        loopExpr.setExprId(body.getExprId());
-        body.setExprId(id);
-        body.setParent(loopExpr);
         return loopExpr;
     }
 
@@ -240,7 +226,6 @@ class JavaRegexParser extends RegexParser {
                     if (isNot)
                         sumExpr.negate();
                     sumExpr.setStr(patternStr.substring(beginPos, pos));
-                    sumExpr.setExprId(popExprId());
                     return sumExpr;
                 case '[':
                     read(); // eat [
@@ -301,7 +286,6 @@ class JavaRegexParser extends RegexParser {
             resultExpr = new SingleCharExpr(c);
         }
         if (isNotRange){
-            resultExpr.setExprId(id);
             return resultExpr;
         }
         // <case 2>. process character class
@@ -330,7 +314,6 @@ class JavaRegexParser extends RegexParser {
             resultExpr = new CharRangeExpr();
             ((CharRangeExpr)resultExpr).addRange(beginExpr.getChar(), endExpr.getChar());
         }
-        resultExpr.setExprId(id);
         return resultExpr;
     }
 
@@ -387,7 +370,6 @@ class JavaRegexParser extends RegexParser {
         if (isNeg) {
             expr.negate();
         }
-        //expr.setExprId(popExprId());
         return expr;
     }
 
@@ -561,7 +543,6 @@ class JavaRegexParser extends RegexParser {
                 expr = new SingleCharExpr(escapeChar);
             }
         }
-        //expr.setExprId(popExprId());
         return expr;
     }
 
@@ -661,11 +642,6 @@ class JavaRegexParser extends RegexParser {
         }
         expect(')', "Unclosed group");
         // when group is inline match flag group and doesn't have body, it will return null
-        if(resultExpr != null){
-            resultExpr.setExprId(id);
-        }
-        body.setExprId(id_body);
-        body.getExpr().setParent(resultExpr);
         return resultExpr;
     }
 
