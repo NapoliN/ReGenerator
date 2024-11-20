@@ -5,6 +5,9 @@ import rengar.util.Pair;
 
 import java.util.*;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 public class SequenceExpr extends Expr implements Iterable<Expr> {
     private final List<Expr> exprs = new ArrayList<>();
 
@@ -12,20 +15,18 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
         return exprs;
     }
 
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Sequence\",");
-        sb.append("\"sequences\": [");
-        sb.append(exprs.get(0).genJsonExpression());
-        for (int i = 1; i < exprs.size(); i++) {
-            sb.append(",");
-            sb.append(exprs.get(i).genJsonExpression());
+    @Override
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Sequence");
+        JSONArray sequences = new JSONArray();
+        for (int i = 0; i < exprs.size(); i++) {
+            sequences.add(get(i).genJsonExpression());
         }
-        sb.append("]");
-        sb.append("}");
-        return sb.toString();
+        json.put("sequences", sequences);
+
+        return json;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
             newSeqExpr.add(newExpr);
             newExpr.setParent(newSeqExpr);
         }
-        
+
         return newSeqExpr;
     }
 
@@ -118,15 +119,16 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
     }
 
     public SequenceExpr subSequence(int begin, int end) {
-        return subSequence(this, begin ,end);
+        return subSequence(this, begin, end);
     }
 
     /**
      * find the target in source
+     * 
      * @param source source sequence expr
      * @param target target expr (Sequence Expr or LoopExpr)
      * @return the start index and end index(exclusive)
-     * */
+     */
     public static Pair<Integer, Integer> indexOf(SequenceExpr source, Expr target) {
         int begin, end;
         switch (target) {
@@ -138,17 +140,19 @@ public class SequenceExpr extends Expr implements Iterable<Expr> {
                 begin = source.getExprs().indexOf(target);
                 end = begin + 1;
             }
-        };
+        }
+        ;
         return new Pair<>(begin, end);
     }
 
     /**
      * get the sub-sequence from SequenceExpr
+     * 
      * @param seqExpr SequenceExpr
-     * @param begin begin index(inclusive)
-     * @param end end index(exclusive)
+     * @param begin   begin index(inclusive)
+     * @param end     end index(exclusive)
      * @return sub-sequence
-     * */
+     */
     public static SequenceExpr subSequence(SequenceExpr seqExpr, int begin, int end) {
         List<Expr> subList = seqExpr.getExprs().subList(begin, end);
         SequenceExpr subSeq = new SequenceExpr();

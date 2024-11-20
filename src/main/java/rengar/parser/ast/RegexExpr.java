@@ -1,6 +1,9 @@
 package rengar.parser.ast;
 
 import java.util.*;
+
+import com.alibaba.fastjson.JSONObject;
+
 import java.lang.IndexOutOfBoundsException;
 
 // just a wrapper
@@ -19,15 +22,13 @@ public class RegexExpr extends Expr {
         return expr;
     }
 
-    public String genJsonExpression() {
+    public JSONObject genJsonExpression() {
         StringBuilder sb = new StringBuilder();
-        sb.append("{")
-            .append(String.format("\"id\": %d,", getExprId()))
-            .append("\"type\": \"Regex\", ")
-            .append("\"body\": ")
-            .append(expr.genJsonExpression())
-            .append("}");
-        return sb.toString();
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Regex");
+        json.put("body", expr.genJsonExpression());
+        return json;
     }
 
     @Override

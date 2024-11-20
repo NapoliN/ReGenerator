@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 import rengar.parser.ast.LoopExpr.LoopType;
 
 public class LoopExpr extends Expr {
@@ -38,25 +40,15 @@ public class LoopExpr extends Expr {
         body = expr;
     }
 
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Loop\", ");
-        sb.append("\"min\": ");
-        sb.append(min);
-        sb.append(", ");
-        sb.append("\"max\": ");
-        sb.append(max);
-        sb.append(", ");
-        sb.append("\"strategy\": ");
-        sb.append("\"");
-        sb.append(type);
-        sb.append("\", ");
-        sb.append("\"body\": ");
-        sb.append(body.genJsonExpression());
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Loop");
+        json.put("min", min);
+        json.put("max", max);
+        json.put("strategy", type.toString());
+        json.put("body", body.genJsonExpression());
+        return json;        
     }
 
     @Override

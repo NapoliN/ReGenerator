@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 import rengar.parser.charutil.*;
 import rengar.parser.range.*;
 
@@ -55,22 +57,18 @@ public class CharRangeExpr extends CharExpr {
     }
 
     @Override
-    public String genJsonExpression(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Char\", ");
+    public JSONObject genJsonExpression(){
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Char");
         if (string != null && string.equals(".")){
-            sb.append("\"subtype\": \"Any\"");
+            json.put("subtype", "Any");
         }
         else {
-            sb.append("\"subtype\": \"Range\", ");
-            sb.append("\"neg\": ");
-            sb.append(neg);
-            sb.append(", ");
-            sb.append("\"range\": ");
-            sb.append("\"[");
-            // TODO rangesetを出力する
+            json.put("subtype", "Range");
+            json.put("neg", neg);
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
             CharRangeSet tmp = rangeSet;
             for (CharRange range: tmp.getRanges()){
                 if (range.isSingleChar()) {
@@ -82,10 +80,10 @@ public class CharRangeExpr extends CharExpr {
                     sb.append(CharUtil.toPrintableString(range.end));
                 }
             }
-            sb.append("]\"");
+            sb.append("]");
+            json.put("range", sb.toString());
         }
-        sb.append("}");
-        return sb.toString();
+        return json;
     }
 
     @Override

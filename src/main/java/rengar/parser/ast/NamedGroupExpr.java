@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 public class NamedGroupExpr extends GroupExpr {
     private final String name;
     private final int index;
@@ -18,19 +20,13 @@ public class NamedGroupExpr extends GroupExpr {
     }
 
     @Override
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Group\",");
-        sb.append("\"name\": ");
-        sb.append("\"");
-        sb.append(getName());
-        sb.append("\", ");
-        sb.append("\"body\": ");
-        sb.append(getBody().genJsonExpression());
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "NamedGroup");
+        json.put("name", name);
+        json.put("body", getBody().genJsonExpression());
+        return json;
     }
 
     @Override

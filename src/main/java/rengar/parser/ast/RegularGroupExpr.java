@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 public class RegularGroupExpr extends GroupExpr {
     private final int index;
     public RegularGroupExpr(RegexExpr body, int index) {
@@ -8,15 +10,12 @@ public class RegularGroupExpr extends GroupExpr {
     }
 
     @Override
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Group\",");
-        sb.append("\"body\": ");
-        sb.append(getBody().genJsonExpression());
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Group");
+        json.put("body", getBody().genJsonExpression());
+        return json;
     }
 
     public int getIndex() {

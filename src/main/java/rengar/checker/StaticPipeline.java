@@ -122,7 +122,7 @@ public class StaticPipeline {
             RegexParser parser = RegexParser.createParser(language, patternStr);
             targetExpr = parser.parse();
             
-            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression()));
+            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression().toJSONString()));
         } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);

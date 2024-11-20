@@ -1,5 +1,7 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 import rengar.parser.charutil.*;
 
 public class SingleCharExpr extends CharExpr {
@@ -18,18 +20,12 @@ public class SingleCharExpr extends CharExpr {
         return singleCharExpr;
     }
 
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Char\", ");
-        sb.append("\"subtype\": \"Single\", ");
-        sb.append("\"char\": ");
-        sb.append("\"");
-        sb.append(CharUtil.toPrintableString(c));
-        sb.append("\"");
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Char");
+        json.put("char", CharUtil.toRegexString(c));
+        return json;
     }
 
     @Override

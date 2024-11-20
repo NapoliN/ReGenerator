@@ -1,18 +1,20 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 public class LookaheadExpr extends LookaroundExpr {
     public LookaheadExpr(RegexExpr cond, boolean isNot) {
         super(cond, isNot);
     }
 
     @Override
-    public String genJsonExpression(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"LookAround\"");
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression(){
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Lookahead");
+        json.put("body", cond.genJsonExpression());
+        json.put("isNot", isNot);
+        return json;
     }
 
     @Override

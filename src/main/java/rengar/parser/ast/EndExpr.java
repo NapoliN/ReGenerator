@@ -1,17 +1,17 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSONObject;
+
 // $
 public class EndExpr extends AnchorExpr {
 
     @Override
-    public String genJsonExpression(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Anchor\", ");
-        sb.append("\"subtype\": \"End\"");
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression(){
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Anchor");
+        json.put("subtype", "End");
+        return json;
     }
 
     @Override

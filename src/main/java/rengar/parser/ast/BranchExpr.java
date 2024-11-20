@@ -2,6 +2,9 @@ package rengar.parser.ast;
 
 import java.util.*;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
 public class BranchExpr extends Expr implements Iterable<SequenceExpr> {
     private final List<SequenceExpr> branchs = new ArrayList<>();
     public void add(SequenceExpr expr) {
@@ -28,20 +31,18 @@ public class BranchExpr extends Expr implements Iterable<SequenceExpr> {
         return branchs;
     }
 
-    public String genJsonExpression() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"Branch\",");
-        sb.append("\"branchs\": [");
-        sb.append(branchs.get(0).genJsonExpression());
-        for (int i = 1; i < branchs.size(); i++) {
-            sb.append(",");
-            sb.append(branchs.get(i).genJsonExpression());
+    @Override
+    public JSONObject genJsonExpression() {
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "Sequence");
+        JSONArray branches = new JSONArray();
+        for (int i = 0; i < getBranchs().size(); i++) {
+            branches.add(getBranchs().get(i).genJsonExpression());
         }
-        sb.append("]");
-        sb.append("}");
-        return sb.toString();
+        json.put("branchs", branches);
+
+        return json;
     }
 
     @Override

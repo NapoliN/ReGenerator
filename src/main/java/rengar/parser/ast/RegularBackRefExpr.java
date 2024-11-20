@@ -1,5 +1,8 @@
 package rengar.parser.ast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 public class RegularBackRefExpr extends BackRefExpr {
     private final int index;
     public RegularBackRefExpr(int index) {
@@ -10,13 +13,12 @@ public class RegularBackRefExpr extends BackRefExpr {
     }
 
     @Override
-    public String genJsonExpression(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append(String.format("\"id\": %d,",getExprId()));
-        sb.append("\"type\": \"BackRef\"");
-        sb.append("}");
-        return sb.toString();
+    public JSONObject genJsonExpression(){
+        JSONObject json = new JSONObject();
+        json.put("id", getExprId());
+        json.put("type", "BackRef");
+        json.put("index", index);
+        return json;
     }
 
     @Override

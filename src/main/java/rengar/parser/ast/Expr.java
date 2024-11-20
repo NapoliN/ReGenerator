@@ -2,6 +2,8 @@ package rengar.parser.ast;
 
 import java.util.*;
 
+import com.alibaba.fastjson.JSONObject;
+
 public abstract class Expr {
     // used to cache the result of toString()
     protected String string;
@@ -10,7 +12,7 @@ public abstract class Expr {
 
     public abstract String genString();
 
-    public abstract String genJsonExpression();
+    public abstract JSONObject genJsonExpression();
     private List<Integer> ancestors; // used for cache
 
     private int exprId = -1;
