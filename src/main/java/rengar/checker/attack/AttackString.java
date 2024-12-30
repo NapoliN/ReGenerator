@@ -108,7 +108,6 @@ public class AttackString implements StringProvider{
         // sをint[]にしてattackにsetする
         setAttack(arr);
         setN(getN() * (prevLen/arr.length));
-
     }
 
     private static int[] findMinimalRepeatedSubarray(int[] arr) {

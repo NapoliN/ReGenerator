@@ -156,7 +156,7 @@ public class StaticPipeline {
                 // PTLS, POLSなら部分脆弱性としての検証
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern);
                 if (attackStr != null) {
-                    attackStr.convolutePump();
+                    //attackStr.convolutePump();
                     ReDoSPattern redosPattern = pattern.getPattern();
                     switch (redosPattern) {
                         case POAPattern poa:
@@ -174,8 +174,6 @@ public class StaticPipeline {
                         default:
                             break;
                     }
-                    if (!findAll)
-                        break;
                 }
             } catch (PatternSyntaxException ignored) {
             }
@@ -191,7 +189,7 @@ public class StaticPipeline {
             DAG dag = new DAG();
             for (int i = 0; i < result.vulnerabilities.size(); i++) {
                 Vulnerability vuln1 = result.vulnerabilities.get(i);
-                dag.addNode(i);
+                dag.addNode(i,vuln1.getAttackString().getPumpLength());
                 for (int j = i + 1; j < result.vulnerabilities.size(); j++) {
                     Vulnerability vuln2 = result.vulnerabilities.get(j);
                     var compare = Vulnerability.compare(targetExpr, vuln1, vuln2);
@@ -282,14 +280,20 @@ public class StaticPipeline {
                 System.out.println("ERROR");
             return null;
         }
-
+        AttackString candidate = null;
+        // 予めpumpを畳み込む
+        attackStrList.forEach(attackStr -> {
+            attackStr.convolutePump();
+        });
+        // pumpが短い順番に並べる        
+        attackStrList = attackStrList.stream().sorted((a,b) -> a.getPumpLength() - b.getPumpLength()).toList();
         for (AttackString attackStr : attackStrList) {
             if (Thread.currentThread().isInterrupted())
                 break;
-            /*
+            
             if (!GlobalConfig.option.isQuiet())
                 System.out.printf("try %s ", attackStr.genReadableStr());
-            */
+            
             try {
                 Validator validator = new Validator(patternStr, pattern.getType());
                 if (validator.validate(attackStr.genStr(), upperBound)) {
@@ -297,7 +301,13 @@ public class StaticPipeline {
                     if (!GlobalConfig.option.isQuiet())
                         System.out.println("SUCCESS");
                     */
+                    // より短い方が有利
+                    //attackStr.convolutePump();
+                    //if (candidate == null || candidate.getPumpLength() > attackStr.getPumpLength()){
+                    //    candidate = attackStr;
+                    //}
                     return attackStr;
+                    //return attackStr;
                 } else {
                     /*
                     if (!GlobalConfig.option.isQuiet())
@@ -309,6 +319,7 @@ public class StaticPipeline {
                     System.out.println("SYNTAX ERROR");
             }
         }
+        //return candidate;
         return null;
     }
 
