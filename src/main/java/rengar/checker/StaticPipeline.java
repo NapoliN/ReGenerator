@@ -155,7 +155,9 @@ public class StaticPipeline {
                 // EOLSなら本検証
                 // PTLS, POLSなら部分脆弱性としての検証
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern);
+                //System.out.println(pattern.getPattern().toString());
                 if (attackStr != null) {
+                    System.out.println(attackStr.genReadableStr());
                     //attackStr.convolutePump();
                     ReDoSPattern redosPattern = pattern.getPattern();
                     switch (redosPattern) {
@@ -168,6 +170,10 @@ public class StaticPipeline {
                             result.setVulnerability("EOLS", attackStr);
                             break;
                         case EODPattern eod:
+                            result.setVulnerability("EOLS", attackStr);
+                            flagEOLS = true;
+                            break;
+                        case NQPattern nq:
                             result.setVulnerability("EOLS", attackStr);
                             flagEOLS = true;
                             break;
@@ -292,7 +298,7 @@ public class StaticPipeline {
                 break;
             
             if (!GlobalConfig.option.isQuiet())
-                System.out.printf("try %s ", attackStr.genReadableStr());
+                System.out.printf("try %s\n", attackStr.genReadableStr());
             
             try {
                 Validator validator = new Validator(patternStr, pattern.getType());
