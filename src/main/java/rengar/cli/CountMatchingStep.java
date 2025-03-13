@@ -20,7 +20,6 @@ public class CountMatchingStep {
         Pattern pattern = Pattern.compile(patternStr);
         String input = decodeAttackString(attackStr);
         Matcher matcher = pattern.matcher(input);
-        //System.out.printf("pattern: %s\nattack: %s\n", patternStr,input);
         try{
             matcher.matches();
             int step = matcher.getProfile().getMatchingStep();

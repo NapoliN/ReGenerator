@@ -21,6 +21,7 @@ public class Validator {
                 matcher.find();
             } else {
                 matcher.matches();
+                //System.out.println(matcher.getProfile().getMatchingStep());
             }
         } catch (EarlyExitException ignored) {
             return true;

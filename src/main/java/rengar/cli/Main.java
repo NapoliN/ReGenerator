@@ -192,6 +192,7 @@ public class Main {
                         jsonObject.put("Status", "Vulnerable");
                         jsonObject.put("VulnType", result.type);
                         jsonObject.put("AttackString", b64encode(result.attackString.genReadableStr()));
+                        jsonObject.put("RawAttackString",result.attackString.genStr());
                         /**
                         List<JSONObject> patternList = new LinkedList<>();
                         for (Pair<DisturbFreePattern, StringProvider> pair : result.attacks) {

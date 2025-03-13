@@ -92,6 +92,7 @@ public class StaticPipeline {
         } catch (InterruptedException | ExecutionException | TimeoutException ignored) {
             // スタックトレースの出力
             ignored.printStackTrace();
+            System.out.println("Some Error");
             future.cancel(true);
             return null;
         }
@@ -122,7 +123,7 @@ public class StaticPipeline {
             RegexParser parser = RegexParser.createParser(language, patternStr);
             targetExpr = parser.parse();
             
-            System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression().toJSONString()));
+            //System.out.println(String.format("regex AST: %s", targetExpr.genJsonExpression().toJSONString()));
         } catch (PatternSyntaxException e) {
             if (!GlobalConfig.option.isQuiet())
                 System.out.println(e);
@@ -157,9 +158,9 @@ public class StaticPipeline {
                 AttackString attackStr = handleReDoSPattern(patternStr, pattern);
                 //System.out.println(pattern.getPattern().toString());
                 if (attackStr != null) {
-                    System.out.println(attackStr.genReadableStr());
-                    //attackStr.convolutePump();
+                    System.out.println("SUCCESS: " + attackStr.genReadableStr());
                     ReDoSPattern redosPattern = pattern.getPattern();
+                    //System.out.println(redosPattern.toString());
                     switch (redosPattern) {
                         case POAPattern poa:
                             count += 1;
@@ -189,7 +190,7 @@ public class StaticPipeline {
         // vulnerabilities, require addtional analysis
         // step 4. generate multi-vulnerability attack string
         if (!flagEOLS && count > 1) {
-            result.printVulnerabilitiesAST();
+            //result.printVulnerabilitiesAST();
 
             // construct DAG for vulnerabilities
             DAG dag = new DAG();
@@ -210,12 +211,6 @@ public class StaticPipeline {
             // search longest increasing sequence
             DAGDFS dfs = new DAGDFS(dag);
             List<Integer> longestPath = dfs.findLongestIncreasingSequence();
-            // longestPathを出力する
-            //System.out.print("Longest Path:");
-            for (int i = 0; i < longestPath.size(); i++) {
-                System.out.printf("%d ", longestPath.get(i));
-            }
-            System.out.println();
 
             List<Vulnerability> longestVuln = new ArrayList<>();
             for (int i = 0; i < longestPath.size(); i++) {
@@ -225,9 +220,9 @@ public class StaticPipeline {
             // generate multi-vulnerability attack string
             MultiVulnPattern multiVulnPattern = new MultiVulnPattern(checker.getRegexExpr(), longestVuln);
             MultiVulnAttackString multiVulnAttackString = multiVulnPattern.getMultiVulnAttackString();
-            System.out.println(multiVulnAttackString.genReadableStr());
-            System.out.println("entire length: " + multiVulnAttackString.getLength());
-            System.out.println("estimated step: " + multiVulnAttackString.estimatedMatchingStep().toString());
+            System.out.println("Assembled:" + multiVulnAttackString.genReadableStr());
+            //System.out.println("entire length: " + multiVulnAttackString.getLength());
+            //System.out.println("estimated step: " + multiVulnAttackString.estimatedMatchingStep().toString());
 
             // validate multi-vulnerability attack string
             Validator validator = new Validator(patternStr, "MPV");
@@ -278,7 +273,9 @@ public class StaticPipeline {
         */
         List<AttackString> attackStrList;
         // if pattern is exponential pattern, use user designated upperbound, otherwise use partial analysis upperbound
-        int upperBound = pattern.getPattern() instanceof EOAPattern || pattern.getPattern() instanceof EODPattern ? GlobalConfig.option.getMatchingStepUpperBound() : GlobalConfig.MatchingStepUpperBoundForPartialAnalysis;
+        //int upperBound = pattern.getPattern() instanceof EOAPattern || pattern.getPattern() instanceof EODPattern ? GlobalConfig.option.getMatchingStepUpperBound() : GlobalConfig.MatchingStepUpperBoundForPartialAnalysis;
+        int upperBound = GlobalConfig.MatchingStepUpperBoundForPartialAnalysis;
+
         try {
             attackStrList = pattern.generate();
         } catch (Exception | Error ignored) {
@@ -297,23 +294,14 @@ public class StaticPipeline {
             if (Thread.currentThread().isInterrupted())
                 break;
             
+            /*
             if (!GlobalConfig.option.isQuiet())
                 System.out.printf("try %s\n", attackStr.genReadableStr());
-            
+            */
             try {
                 Validator validator = new Validator(patternStr, pattern.getType());
                 if (validator.validate(attackStr.genStr(), upperBound)) {
-                    /*
-                    if (!GlobalConfig.option.isQuiet())
-                        System.out.println("SUCCESS");
-                    */
-                    // より短い方が有利
-                    //attackStr.convolutePump();
-                    //if (candidate == null || candidate.getPumpLength() > attackStr.getPumpLength()){
-                    //    candidate = attackStr;
-                    //}
                     return attackStr;
-                    //return attackStr;
                 } else {
                     /*
                     if (!GlobalConfig.option.isQuiet())
