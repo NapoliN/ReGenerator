@@ -6,6 +6,8 @@ ReGenerator is the prototype implementation of my master's research thesis.
 従来のツールに比べ、より効果の高い(危険である)攻撃文字列の生成を行うことが可能です。
 なお、本ツールが対象とする環境はJava 8であり、異なる環境では生成される攻撃文字列が有効とならない場合があります。
 
+本ツールの実装のため、[RENGAR](https://github.com/d1tto/Rengar)をforkし、改変しました。
+
 # How to use
 ## 前準備
 1. [Maven](https://maven.apache.org/)をインストールする
